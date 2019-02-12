@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleBook } from '../models/google-book.model';
+import { DatamockService } from '../datamock.service';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-google-book-list',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoogleBookListComponent implements OnInit {
 
-  constructor() { }
+  googleBooksList: BehaviorSubject<GoogleBook[]>;
+
+  constructor(private route: ActivatedRoute,
+    private datamockService: DatamockService,
+    private router: Router) { }
 
   ngOnInit() {
+    this.googleBooksList  = this.datamockService.availableGoogleBooks$
   }
 
 }
+
+
+

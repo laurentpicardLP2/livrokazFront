@@ -13,6 +13,7 @@ import { GoogleBookListComponent } from './google-book-list/google-book-list.com
 import { GendleListComponent } from './gendle-list/gendle-list.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material-module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

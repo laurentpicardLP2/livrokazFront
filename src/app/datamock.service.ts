@@ -87,16 +87,14 @@ export class DatamockService {
    * Fonction de suppression d'un auteur
    * @param auteur l'auteur à supprimer
    */
-  public deleteAuthor(author: Author) {
+  public deleteAuthor(author: Author, indexDelete: number) {
     this.httpClient.put<Author>('http://localhost:8080/livrokaz/delauthor', author).subscribe(
       availableAuthors => {
+        this.availableAuthors.splice(indexDelete, 1);
         this.availableAuthors$.next(this.availableAuthors);
+
       }
     )
   }
-
-  
-  
-
 
 }

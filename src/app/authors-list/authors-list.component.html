@@ -16,10 +16,11 @@
               <td>{{ author.authorId }}</td>
               <td>{{ author.fullName }}</td>
               <td><button type="button" class="btn btn-secondary" (click)="onUpdate(author.authorId)">Modifier</button></td>
-              <td><button type="button" class="btn btn-secondary" (click)="onDelete(author.authorId)">Supprimer</button></td>
+              <td><button type="button" class="btn btn-secondary" (click)="onDelete(author.authorId, i)">Supprimer</button></td>
             </tr>
           </tbody>
         </table> 
+        
   </form>
   </div>
   

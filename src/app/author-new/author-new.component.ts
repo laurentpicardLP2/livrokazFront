@@ -1,5 +1,5 @@
 import { DatamockService } from './../datamock.service';
-import { Author } from './../models/auhtor.model';
+import { Author } from './../models/author.model';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 

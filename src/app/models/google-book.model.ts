@@ -1,4 +1,4 @@
-import { Author } from './auhtor.model';
+import { Author } from './author.model';
 
 export class GoogleBook {
     public bookId: number;

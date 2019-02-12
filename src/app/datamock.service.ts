@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Author } from './models/auhtor.model';
+import {  Author } from './models/author.model';
 import { GoogleBook } from './models/google-book.model'
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';

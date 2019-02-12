@@ -1,6 +1,6 @@
 import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
-import { Author} from '../models/auhtor.model';
+import { Author} from '../models/author.model';
 import { DatamockService } from '../datamock.service';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DatamockService } from './../datamock.service';
-import { Author } from './../models/auhtor.model';
+import { Author } from './../models/author.model';
 
 @Component({
   selector: 'app-author-detail',

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { GoogleBookListComponent } from './google-book-list/google-book-list.component';
 import { GendleListComponent } from './gendle-list/gendle-list.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GendleListComponent } from './gendle-list/gendle-list.component';
     AuthorNewComponent,
     AuthorDetailComponent,
     GoogleBookListComponent,
-    GendleListComponent
+    GendleListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

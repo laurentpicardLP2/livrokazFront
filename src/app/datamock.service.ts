@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {  Author } from './models/auhtor.model';
+import { GoogleBook } from './models/google-book.model'
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -26,7 +27,7 @@ export class DatamockService {
   private getAuthors(): Observable<Author[]> {
     return this.httpClient.get<Author[]>('http://localhost:8080/livrokaz/authors');
   }
-
+  
 
   /**
    * La fonction publishAuthors() est chargée une fois au démarrage de l'application.
@@ -96,5 +97,49 @@ export class DatamockService {
       }
     )
   }
+
+
+
+  // La liste des googleBooks de l'application
+  private availableGoogleBooks: GoogleBook [] ;
+
+    // La liste observable que l'on rend visible partout dans l'application
+    availableGoogleBooks$: BehaviorSubject<GoogleBook[]> = new BehaviorSubject(this.availableGoogleBooks);
+
+  /**
+   * La fonction getGoogleBooks() est privée car elle n'a besoin d'être appellée que dans le service.
+   */
+  private getGoogleBooks(): Observable<GoogleBook[]> {
+    return this.httpClient.get<GoogleBook[]>('http://localhost:8080/livrokaz/books');
+  }
+
+  /** La fonction publishGoogleBooks() est chargée une fois au démarrage de l'application.
+  * Elle récupère la liste des timelines depuis la base de données et met à jour la liste et la liste observable.
+  */
+ public publishGoogleBooks() {
+   this.getGoogleBooks().subscribe(
+     googleBookList => {
+       this.availableGoogleBooks = googleBookList;
+       this.availableGoogleBooks$.next(this.availableGoogleBooks);
+     });
+ }
+
+
+ /**
+   * Cette fonction permet de trouver un auteur dans la liste des auteurs chargés par l'application
+   * grâce à son ID.
+   * @param authorId l'id qu'il faut rechercher dans la liste. 
+   */
+  /*public findGoogleBook(authorId: number): Observable<Author> {
+    if (authorId) {
+      if (!this.availableAuthors) {
+        return this.getAuthors().pipe(map(authors => authors.find(authors => authors.authorId === authorId)));
+      }
+      return of(this.availableAuthors.find(author => author.authorId === authorId));
+    } else {
+      return of(new Author(''));
+    }
+  }*/
+
 
 }

@@ -10,6 +10,7 @@ import { AuthorNewComponent } from './author-new/author-new.component';
 import { FormsModule } from '@angular/forms';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { GoogleBookListComponent } from './google-book-list/google-book-list.component';
+import { GendleListComponent } from './gendle-list/gendle-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GoogleBookListComponent } from './google-book-list/google-book-list.com
     AuthorsListComponent,
     AuthorNewComponent,
     AuthorDetailComponent,
-    GoogleBookListComponent
+    GoogleBookListComponent,
+    GendleListComponent
   ],
   imports: [
     BrowserModule,

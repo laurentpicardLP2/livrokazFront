@@ -13,5 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.publishAuthors();
+    this.dataService.publishGendles();
+    // this.dataService.publishGoogleBooks();
   }
 }

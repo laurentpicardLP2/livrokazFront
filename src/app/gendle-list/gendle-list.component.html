@@ -1,3 +1,21 @@
-<p>
-  gendle-list works!
-</p>
+<div class="container-fluid">
+  <form>
+  
+      <h1> Liste des Genres</h1><a routerLink="/gendles">Ajouter un auteur</a>
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Type</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let gendle of gendleList | async; let i=index">
+              <td>{{ gendle.gendleId }}</td>
+              <td>{{ gendle.typeGendle }}</td>
+              </tr>
+          </tbody>
+        </table> 
+        
+  </form>
+  </div>

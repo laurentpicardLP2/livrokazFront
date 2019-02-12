@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  Author } from './models/author.model';
-import { GoogleBook } from './models/google-book.model'
+import { GoogleBook } from './models/google-book.model';
+import { Gendle } from './models/gendle.model';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,9 +19,13 @@ export class DatamockService {
     // La liste des authors de l'application
     private availableAuthors: Author [] ;
 
-    // La liste observable que l'on rend visible partout dans l'application
-    availableAuthors$: BehaviorSubject<Author[]> = new BehaviorSubject(this.availableAuthors);
+    //la liste des Genres de l'application
+    private availableGendles: Gendle[];
 
+    // La liste observable que l'on rend visible partout dans l'application
+    
+availableAuthors$: BehaviorSubject<Author[]> = new BehaviorSubject(this.availableAuthors);
+availableGendle$: BehaviorSubject<Gendle[]> = new BehaviorSubject(this.availableGendles);
     /**
    * La fonction getAuthors() est privée car elle n'a besoin d'être appellée que dans le service.
    */
@@ -28,6 +33,9 @@ export class DatamockService {
     return this.httpClient.get<Author[]>('http://localhost:8080/livrokaz/authors');
   }
   
+  private getGendles(): Observable<Gendle[]>{
+    return this.httpClient.get<Gendle[]>('http://localhost:8080/livrokaz/gendles');
+  }
 
   /**
    * La fonction publishAuthors() est chargée une fois au démarrage de l'application.
@@ -39,6 +47,15 @@ export class DatamockService {
         this.availableAuthors = authorList;
         this.availableAuthors$.next(this.availableAuthors);
       });
+  }
+
+  public publishGendles(){
+    this.getGendles().subscribe(
+      gendleList => {
+        this.availableGendles = gendleList;
+        this.availableGendle$.next(this.availableGendles);
+      }
+    )
   }
 
   /**

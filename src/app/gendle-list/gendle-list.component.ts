@@ -19,6 +19,7 @@ export class GendleListComponent implements OnInit {
                private router: Router) { }
 
   ngOnInit() {
+    this.gendleList = this.datamockService.availableGendle$
   }
 
 }

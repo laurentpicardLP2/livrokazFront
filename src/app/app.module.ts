@@ -11,8 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { GoogleBookListComponent } from './google-book-list/google-book-list.component';
 import { GendleListComponent } from './gendle-list/gendle-list.component';
-import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material-module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AuthorDetailComponent,
     GoogleBookListComponent,
     GendleListComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

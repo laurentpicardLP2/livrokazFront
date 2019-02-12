@@ -14,6 +14,7 @@ import { GendleListComponent } from './gendle-list/gendle-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { LoginComponent } from './login/login.component';
+import { GoogleBookDetailComponent } from './google-book-detail/google-book-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoginComponent } from './login/login.component';
     GoogleBookListComponent,
     GendleListComponent,
     LoginComponent,
+    GoogleBookDetailComponent,
   ],
   imports: [
     BrowserModule,

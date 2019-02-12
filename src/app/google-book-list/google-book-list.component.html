@@ -10,8 +10,8 @@
               
               <th> Prix </th>
               <th>Couverture</th>
-              <th>Modifier</th>
-              <th>Supprimer</th>
+              <th>Visualier</th>
+              <th>commander</th>
               
               </tr>
           </thead>
@@ -21,8 +21,8 @@
               <td>{{ googleBook.title }}</td>
               <td>{{googleBook.price}}€</td>
               <td><img src="{{ googleBook.imgThumbnail }}" width="40" height="40"  alt=""></td>
-              <td><button type="button" class="btn btn-secondary" (click)="onUpdate(author.authorId)">Modifier</button></td>
-              <td><button type="button" class="btn btn-secondary" (click)="onDelete(author.authorId, i)">Supprimer</button></td>
+              <td><button type="button" class="btn btn-secondary" (click)="onShow(googleBook.bookId)">Visualiser</button></td>
+              <td><button type="button" class="btn btn-secondary" (click)="onOrder(googleBook.bookId)">Commander</button></td>
             </tr>
           </tbody>
         </table> 

@@ -143,20 +143,20 @@ availableGendle$: BehaviorSubject<Gendle[]> = new BehaviorSubject(this.available
 
 
  /**
-   * Cette fonction permet de trouver un auteur dans la liste des auteurs chargés par l'application
+   * Cette fonction permet de trouver un livre dans la liste des auteurs chargés par l'application
    * grâce à son ID.
-   * @param authorId l'id qu'il faut rechercher dans la liste. 
+   * @param bookId l'id qu'il faut rechercher dans la liste. 
    */
-  /*public findGoogleBook(authorId: number): Observable<Author> {
-    if (authorId) {
-      if (!this.availableAuthors) {
-        return this.getAuthors().pipe(map(authors => authors.find(authors => authors.authorId === authorId)));
+  public findGoogleBook(bookId: number): Observable<GoogleBook> {
+    if (bookId) {
+      if (!this.availableGoogleBooks) {
+        return this.getGoogleBooks().pipe(map(googleBook => googleBook.find(googleBook => googleBook.bookId === bookId)));
       }
-      return of(this.availableAuthors.find(author => author.authorId === authorId));
+      return of(this.availableGoogleBooks.find(googleBook => googleBook.bookId === bookId));
     } else {
-      return of(new Author(''));
+      return of(null);
     }
-  }*/
+  }
 
 
 }

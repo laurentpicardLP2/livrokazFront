@@ -21,6 +21,12 @@ export class GoogleBookListComponent implements OnInit {
     this.googleBooksList  = this.datamockService.availableGoogleBooks$
   }
 
+  onShow(googleBookId: number) {
+
+    this.router.navigate(['googlebooks-detail/' + googleBookId]);
+
+  }
+
 }
 
 

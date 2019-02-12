@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <form>
+  
+      <h1> Liste des auteurs</h1> <div class="div-author-add"><a routerLink="/author-new">Ajouter un auteur</a></div>
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nom</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let author of authorsList | async; let i=index">
+              <td>{{ author.authorId }}</td>
+              <td>{{ author.fullName }}</td>
+              <td><button type="button" class="btn btn-secondary" (click)="onUpdate(author.authorId)">Modifier</button></td>
+              <td><button type="button" class="btn btn-secondary" (click)="onDelete(author.authorId)">Supprimer</button></td>
+            </tr>
+          </tbody>
+        </table> 
+  </form>
+  </div>
+  

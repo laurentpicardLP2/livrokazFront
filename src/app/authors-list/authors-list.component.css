@@ -1,0 +1,9 @@
+h1 {
+    display: inline-block;
+}
+
+.div-author-add{
+    padding-left: 15px;
+    display: inline;
+    font-size: 20px;
+}

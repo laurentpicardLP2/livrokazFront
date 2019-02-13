@@ -8,6 +8,8 @@ import { GoogleBook } from '../models/google-book.model';
   templateUrl: './google-book-detail.component.html',
   styleUrls: ['./google-book-detail.component.css']
 })
+
+
 export class GoogleBookDetailComponent implements OnInit {
   idGooglebooks: number;
   editedGooglebook: GoogleBook;

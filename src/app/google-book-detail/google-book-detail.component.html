@@ -16,20 +16,33 @@
 
 <mat-card class="example-card">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <div mat-card-avatar class="example-header-image"><img class="image"
+        src="assets/{{ editedGooglebook.categorie }}.png"></div>
     <mat-card-title>{{ editedGooglebook.title }}</mat-card-title>
     <mat-card-subtitle>{{ editedGooglebook.categorie }}</mat-card-subtitle>
+    <div class="couverture">
+      <img class="img" src="{{ editedGooglebook.imgThumbnail }}">
+    </div>
+    <div class="clear"></div>
+    <div class="matlist">
+      <mat-list role="list">
+        <mat-list-item role="listitem">Item 1</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+      </mat-list>
+    </div>
   </mat-card-header>
-  <div class="img">
-  <img src="{{ editedGooglebook.imgThumbnail }}">
-  </div>
   <mat-card-content>
     {{ editedGooglebook.description }}
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="onOrder(googleBook.bookId)">Commander</button>
+    <button mat-button class="boutton" (click)="onOrder(googleBook.bookId)">Commander</button>
   </mat-card-actions>
 </mat-card>
+
+
+
+
 
 
 
@@ -74,4 +87,4 @@
     </tr>
   </tbody>
 
-  {{ editedGooglebook.title }} --> 
+  {{ editedGooglebook.title }} -->

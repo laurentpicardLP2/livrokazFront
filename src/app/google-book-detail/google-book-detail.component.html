@@ -1,0 +1,103 @@
+<<<<<<< HEAD
+=======
+<mat-card class="container">
+  <mat-card-header class="header">
+    <div mat-card-avatar><img class="image" src="assets/{{ editedGooglebook.categorie }}.png"></div>
+    <mat-card-title>{{ editedGooglebook.title }}</mat-card-title>
+    <mat-card-subtitle>{{ editedGooglebook.categorie }}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="body">
+    <div class="couverture">
+      <img mat-card-image classe ="img" src="{{ editedGooglebook.imgThumbnail }}">
+    </div>
+    <div class="matlist">
+      <mat-list role="list">
+        <mat-list-item role="listitem">Item 1</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <mat-card-content class="footer">{{ editedGooglebook.description }}</mat-card-content>
+  <mat-card-actions><button mat-button class="boutton" (click)="onOrder(googleBook.bookId)">Commander</button></mat-card-actions>
+</mat-card>
+
+
+
+
+
+
+
+<!-- <mat-card class="example-card">
+  <mat-card-header>
+    <img class="image" src="assets/{{ editedGooglebook.categorie }}.png">
+    <mat-card-title> {{ editedGooglebook.title }}</mat-card-title>
+    <mat-card-subtitle>{{ editedGooglebook.categorie }}</mat-card-subtitle>
+  </mat-card-header>
+      <div>
+        <img class="img" src="{{ editedGooglebook.imgThumbnail }}">
+      </div>
+    <div class="matlist">
+      <mat-list role="list">
+        <mat-list-item role="listitem">Item 1</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+      </mat-list>
+    </div>
+  <mat-card-content>
+    {{ editedGooglebook.description }}
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button class="boutton" (click)="onOrder(googleBook.bookId)">Commander</button>
+  </mat-card-actions>
+</mat-card> -->
+
+
+
+
+
+
+
+
+
+
+<!-- table class="table">
+  <thead>
+    <tr>
+      <th>Quantité disponible</th>
+      <th>Catégorie</th>
+      <th>codeISBN</th>
+      <th>Description</th>
+      <th>Couverture</th>
+      <th>Disponible en Ebook</th>
+      <th>language</th>
+      <th>Nombre de pages</th>
+      <th>Prix</th>
+      <th>Titre</th>
+      <th>Genre</th>
+      <th>Editeur</th>
+      <th>Auteurs</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>{{ editedGooglebook.availableQuantity }}</td>
+      <td>{{ editedGooglebook.categorie }}</td>
+      <td>{{ editedGooglebook.codeISBN }}</td>
+      <td>{{ editedGooglebook.description }}</td>
+      <td>{{ editedGooglebook.imgThumbnail }}</td>
+      <td>{{ editedGooglebook.isEbook }}</td>
+      <td>{{ editedGooglebook.langage }}</td>
+      <td>{{ editedGooglebook.pageCount }}</td>
+      <td>{{ editedGooglebook.price }}</td>
+      <td>{{ editedGooglebook.title }}</td>
+      <td>{{ editedGooglebook.gendleId }}</td>
+      <td>{{ editedGooglebook.publishedId }}</td>
+      <td>{{ editedGooglebook.authors }}</td>
+    </tr>
+  </tbody>
+
+  {{ editedGooglebook.title }} -->
+>>>>>>> 28d62e9fea056a8e1c67758763f292aca2a7f726

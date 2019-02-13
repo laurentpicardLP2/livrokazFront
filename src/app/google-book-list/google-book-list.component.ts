@@ -27,6 +27,12 @@ export class GoogleBookListComponent implements OnInit {
 
   }
 
+  onShow(googleBookId: number) {
+
+    this.router.navigate(['googlebooks-detail/' + googleBookId]);
+
+  }
+
 }
 
 

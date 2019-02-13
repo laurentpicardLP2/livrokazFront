@@ -1,20 +1,60 @@
-<table>
-  <tr>
-    <td>{{ editedGooglebook.avalaibleQuantity }}</td>
-  </tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-  <tr></tr>
-</table>
-<!-- {{ editedGooglebook.title }} -->
+<mat-tab-group>
+  <mat-tab label="Quantité disponible">{{ editedGooglebook.availableQuantity }}</mat-tab>
+  <mat-tab label="Catégorie">{{ editedGooglebook.categorie }}</mat-tab>
+  <mat-tab label="Code Isbn">{{ editedGooglebook.codeISBN }}</mat-tab>
+  <mat-tab label="Description">{{ editedGooglebook.description }}</mat-tab>
+  <mat-tab label="Couverture">{{ editedGooglebook.imgThumbnail }}</mat-tab>
+  <mat-tab label="Disponible en Ebook">{{ editedGooglebook.isEbook }}</mat-tab>
+  <mat-tab label="language">{{ editedGooglebook.langage }}</mat-tab>
+  <mat-tab label="Nombre de pages"> Content 3 </mat-tab>
+  <mat-tab label="Prix"> Content 3 </mat-tab>
+  <mat-tab label="Titre"> Content 3 </mat-tab>
+  <mat-tab label="Genre"> Content 3 </mat-tab>
+  <mat-tab label="Editeur"> Content 3 </mat-tab>
+  <mat-tab label="Auteurs"> Content 3 </mat-tab>
+</mat-tab-group>
+
+
+
+
+
+
+<!-- table class="table">
+  <thead>
+    <tr>
+      <th>Quantité disponible</th>
+      <th>Catégorie</th>
+      <th>codeISBN</th>
+      <th>Description</th>
+      <th>Couverture</th>
+      <th>Disponible en Ebook</th>
+      <th>language</th>
+      <th>Nombre de pages</th>
+      <th>Prix</th>
+      <th>Titre</th>
+      <th>Genre</th>
+      <th>Editeur</th>
+      <th>Auteurs</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>{{ editedGooglebook.availableQuantity }}</td>
+      <td>{{ editedGooglebook.categorie }}</td>
+      <td>{{ editedGooglebook.codeISBN }}</td>
+      <td>{{ editedGooglebook.description }}</td>
+      <td>{{ editedGooglebook.imgThumbnail }}</td>
+      <td>{{ editedGooglebook.isEbook }}</td>
+      <td>{{ editedGooglebook.langage }}</td>
+      <td>{{ editedGooglebook.pageCount }}</td>
+      <td>{{ editedGooglebook.price }}</td>
+      <td>{{ editedGooglebook.title }}</td>
+      <td>{{ editedGooglebook.gendleId }}</td>
+      <td>{{ editedGooglebook.publishedId }}</td>
+      <td>{{ editedGooglebook.authors }}</td>
+    </tr>
+  </tbody>
+
+   {{ editedGooglebook.title }} -->

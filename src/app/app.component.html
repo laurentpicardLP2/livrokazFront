@@ -1,8 +1,11 @@
 <mat-sidenav-container class="container">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav mode="side" opened class="menu">
       <h3>Menu</h3>
-      <a href="" >Mes livres</a>
-      <a href="" >Mes auteurs</a>
+      <ul>
+        <li><a routerLink="/gendles">Liste des gendles</a></li>
+        <li><a routerLink="/googlebooks">Livres</a></li>
+        <li><a routerLink="/authors">Auteurs</a></li>
+      </ul>
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-toolbar color="primary" class="mat-elevation-z5">

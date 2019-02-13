@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DatamockService } from './../datamock.service';
+import { GoogleBookService } from '../services/google-book.service';
 import { GoogleBook } from '../models/google-book.model';
 
 @Component({
@@ -13,7 +13,7 @@ export class GoogleBookDetailComponent implements OnInit {
   editedGooglebook: GoogleBook;
   
   constructor(private route: ActivatedRoute,
-    private datamockService: DatamockService,
+    private googleBookService: GoogleBookService,
     private router: Router) { }
 
 ngOnInit() {
@@ -21,7 +21,7 @@ this.idGooglebooks = +this.route.snapshot.params.idGooglebooks;
 console.log(this.idGooglebooks);
 
 
-this.datamockService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
+this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
 this.editedGooglebook = GoogleBook;
 });
 

@@ -39,9 +39,19 @@
 
 .couverture {
   display: inline;
+<<<<<<< HEAD
 } /
 / 
 mat-list {
   display: inline;
   position: absolute;
 } */
+=======
+} */
+/* 
+mat-list {
+  display: inline;
+  position: absolute;
+} */
+
+>>>>>>> a87f72c9fbd7625d109e75d502add8ac8866d065

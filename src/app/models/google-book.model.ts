@@ -2,8 +2,8 @@ import { Author } from './author.model';
 
 export class GoogleBook {
     public bookId: number;
- 
-    constructor (
+
+    constructor(
         public availableQuantity: number,
         public categorie: string,
         public codeISBN: string,
@@ -19,5 +19,5 @@ export class GoogleBook {
         public gendleId: number,
         public publishedId: number,
         public authors: Author
-        ) {}
+    ) { }
 }

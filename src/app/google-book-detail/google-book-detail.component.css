@@ -1,4 +1,87 @@
-.example-card {
+.container {
+  max-width: auto;
+  /* max-height: auto; */
+  display: flex;
+  flex-direction: column;
+  /* align-content: center; */
+}
+
+.image {
+    overflow: hidden;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+}
+
+
+.img {
+  height: 320px;
+  width: 240px;
+}
+
+.body {
+  display: flex;
+  height: 320px;
+  flex-direction: row;
+
+}
+
+.couverture {
+  display: flex;
+}
+
+.matlist {
+  display: flex;
+}
+
+.footer {
+  align-content: center;
+  flex-grow: 1;
+
+  
+}
+
+.header {
+  flex-grow: 0.2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .example-card {
   max-width: auto;
   max-height: auto;
 }
@@ -13,12 +96,14 @@
   border-radius: 50px;
   width: 40px;
   height: 40px;
+  float: none;
+  
 }
 
 .img {
   width: 240px;
   height: 320px;
-  margin: 0;
+  margin-bottom: 30px;
   border: 1px white solid;
   float: left;
 }
@@ -30,6 +115,17 @@
 
 .boutton {
   border: 1px white solid;
+}
+
+mat-card-header {
+  display: inline-block;
+  position: relative;
+  
+}
+
+
+mat-card-content {
+  display: inline-block;
 }
 
 /* .bite {
@@ -45,4 +141,4 @@ mat-list {
   display: inline;
   position: absolute;
 } */
-
+ 

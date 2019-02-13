@@ -1,29 +1,13 @@
-<!-- <mat-tab-group>
-  <mat-tab label="Quantité disponible">{{ editedGooglebook.availableQuantity }}</mat-tab>
-  <mat-tab label="Catégorie">{{ editedGooglebook.categorie }}</mat-tab>
-  <mat-tab label="Code Isbn">{{ editedGooglebook.codeISBN }}</mat-tab>
-  <mat-tab label="Description">{{ editedGooglebook.description }}</mat-tab>
-  <mat-tab label="Couverture"><img src="{{ editedGooglebook.imgThumbnail }}"></mat-tab>
-  <mat-tab label="Disponible en Ebook">{{ editedGooglebook.isEbook }}</mat-tab>
-  <mat-tab label="language">{{ editedGooglebook.langage }}</mat-tab>
-  <mat-tab label="Nombre de pages"> Content 3 </mat-tab>
-  <mat-tab label="Prix"> Content 3 </mat-tab>
-  <mat-tab label="Titre"> Content 3 </mat-tab>
-  <mat-tab label="Genre"> Content 3 </mat-tab>
-  <mat-tab label="Editeur"> Content 3 </mat-tab>
-  <mat-tab label="Auteurs"> Content 3 </mat-tab>
-</mat-tab-group> -->
-
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"><img class="image"
-        src="assets/{{ editedGooglebook.categorie }}.png"></div>
+<mat-card class="container">
+  <mat-card-header class="header">
+    <div mat-card-avatar><img class="image" src="assets/{{ editedGooglebook.categorie }}.png"></div>
     <mat-card-title>{{ editedGooglebook.title }}</mat-card-title>
     <mat-card-subtitle>{{ editedGooglebook.categorie }}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="body">
     <div class="couverture">
-      <img class="img" src="{{ editedGooglebook.imgThumbnail }}">
+      <img mat-card-image classe ="img" src="{{ editedGooglebook.imgThumbnail }}">
     </div>
-    <div class="clear"></div>
     <div class="matlist">
       <mat-list role="list">
         <mat-list-item role="listitem">Item 1</mat-list-item>
@@ -31,14 +15,40 @@
         <mat-list-item role="listitem">Item 3</mat-list-item>
       </mat-list>
     </div>
+  </div>
+  <mat-card-content class="footer">{{ editedGooglebook.description }}</mat-card-content>
+  <mat-card-actions><button mat-button class="boutton" (click)="onOrder(googleBook.bookId)">Commander</button></mat-card-actions>
+</mat-card>
+
+
+
+
+
+
+
+<!-- <mat-card class="example-card">
+  <mat-card-header>
+    <img class="image" src="assets/{{ editedGooglebook.categorie }}.png">
+    <mat-card-title> {{ editedGooglebook.title }}</mat-card-title>
+    <mat-card-subtitle>{{ editedGooglebook.categorie }}</mat-card-subtitle>
   </mat-card-header>
+      <div>
+        <img class="img" src="{{ editedGooglebook.imgThumbnail }}">
+      </div>
+    <div class="matlist">
+      <mat-list role="list">
+        <mat-list-item role="listitem">Item 1</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+      </mat-list>
+    </div>
   <mat-card-content>
     {{ editedGooglebook.description }}
   </mat-card-content>
   <mat-card-actions>
     <button mat-button class="boutton" (click)="onOrder(googleBook.bookId)">Commander</button>
   </mat-card-actions>
-</mat-card>
+</mat-card> -->
 
 
 

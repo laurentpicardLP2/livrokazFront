@@ -8,15 +8,23 @@
     <div class="couverture">
       <img mat-card-image classe ="img" src="{{ editedGooglebook.imgThumbnail }}">
     </div>
+    <div class = "container-list">
     <div class="matlist">
       <mat-list role="list">
-        <mat-list-item role="listitem">Item 1</mat-list-item>
-        <mat-list-item role="listitem">Item 2</mat-list-item>
-        <mat-list-item role="listitem">Item 3</mat-list-item>
+        <mat-list-item role="listitem">Quantité disponible: {{editedGooglebook.availableQuantity}}</mat-list-item>
+        <mat-list-item role="listitem">Code ISBN: {{ editedGooglebook.codeISBN }}</mat-list-item>
+        <mat-list-item role="listitem">Langue:&nbsp; <span font style = "text-transform: uppercase"> {{ editedGooglebook.langage }}</span></mat-list-item>
+        <mat-list-item role="listitem">Nombre de pages: {{editedGooglebook.pageCount}}</mat-list-item>
+        <mat-list-item role="listitem">Prix: {{editedGooglebook.price}} € </mat-list-item>
+        <mat-list-item role="listitem">Genre: {{editedGooglebook.gendleId }}  </mat-list-item>
+        <mat-list-item role="listitem">Nombre de pages: {{editedGooglebook.publishedId}}</mat-list-item>
       </mat-list>
+      </div>
     </div>
   </div>
-  <mat-card-content class="footer">{{ editedGooglebook.description }}</mat-card-content>
+  <div class="footer">
+  <mat-card-content>{{ editedGooglebook.description }}</mat-card-content>
+  </div>
   <mat-card-actions><button mat-button class="boutton" (click)="onOrder(googleBook.bookId)">Commander</button></mat-card-actions>
 </mat-card>
 

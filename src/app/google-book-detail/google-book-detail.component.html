@@ -3,7 +3,7 @@
   <mat-tab label="Catégorie">{{ editedGooglebook.categorie }}</mat-tab>
   <mat-tab label="Code Isbn">{{ editedGooglebook.codeISBN }}</mat-tab>
   <mat-tab label="Description">{{ editedGooglebook.description }}</mat-tab>
-  <mat-tab label="Couverture">{{ editedGooglebook.imgThumbnail }}</mat-tab>
+  <mat-tab label="Couverture"><img src="{{ editedGooglebook.imgThumbnail }}"></mat-tab>
   <mat-tab label="Disponible en Ebook">{{ editedGooglebook.isEbook }}</mat-tab>
   <mat-tab label="language">{{ editedGooglebook.langage }}</mat-tab>
   <mat-tab label="Nombre de pages"> Content 3 </mat-tab>
@@ -19,7 +19,7 @@
 
 
 
-<<!-- table class="table">
+<!-- table class="table">
   <thead>
     <tr>
       <th>Quantité disponible</th>
@@ -57,4 +57,4 @@
     </tr>
   </tbody>
 
-  <!-- {{ editedGooglebook.title }} --> -->
+  {{ editedGooglebook.title }} --> 

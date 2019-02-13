@@ -1,22 +1,21 @@
-
-<mat-sidenav-container class="container">   
-    <mat-sidenav mode="side" opened>     
-      <h3>Menu</h3>     
-      <a href="" >Mes livres</a>     
-      <a href="" >Mes auteurs</a>   
-    </mat-sidenav>    
-    <mat-sidenav-content>     
-      <mat-toolbar color="primary" class="mat-elevation-z5">       
-        <h1>         
-          {{ title }}       
+<mat-sidenav-container class="container">
+    <mat-sidenav mode="side" opened>
+      <h3>Menu</h3>
+      <a href="" >Mes livres</a>
+      <a href="" >Mes auteurs</a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="mat-elevation-z5">
+        <h1>
+          {{ title }}
         </h1> 
         <ul>
           <li><a routerLink="/gendles">Liste des gendles</a></li>
-        </ul>    
+        </ul>
       </mat-toolbar>
-      <div class="pad">       
-        <router-outlet></router-outlet>  
-      </div>        
+      <div class="pad">
+        <router-outlet></router-outlet>
+      </div>
     </mat-sidenav-content> 
-  </mat-sidenav-container> 
+  </mat-sidenav-container>
 

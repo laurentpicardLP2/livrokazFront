@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DatamockService } from './datamock.service';
+import { AuthorService } from './services/author.service';
+import { GendleService } from './services/gendle.service';
+import { GoogleBookService } from './services/google-book.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +11,15 @@ import { DatamockService } from './datamock.service';
 export class AppComponent implements OnInit {
   title = 'livrokaz';
 
-  constructor(private dataService: DatamockService) {}
+  constructor(
+      private dataAuthorService: AuthorService,
+      private dataGendleService: GendleService,
+      private dataGoogleBookService: GoogleBookService,
+    ) {}
 
   ngOnInit() {
-    this.dataService.publishAuthors();
-    this.dataService.publishGendles();
-    this.dataService.publishGoogleBooks();
+    this.dataAuthorService.publishAuthors();
+    this.dataGendleService.publishGendles();
+    this.dataGoogleBookService.publishGoogleBooks();
   }
 }

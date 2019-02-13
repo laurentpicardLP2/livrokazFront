@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { GoogleBookListComponent } from './google-book-list/google-book-list.component';
 import { GendleListComponent } from './gendle-list/gendle-list.component';
-import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
+import { LoginComponent } from './login/login.component';
+import { GoogleBookDetailComponent } from './google-book-detail/google-book-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MaterialModule } from './material-module';
     AuthorDetailComponent,
     GoogleBookListComponent,
     GendleListComponent,
-    LoginComponent
+    LoginComponent,
+    GoogleBookDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { MaterialModule } from './material-module';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

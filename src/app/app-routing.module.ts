@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { GoogleBookListComponent } from './google-book-list/google-book-list.component';
 import { GendleListComponent } from './gendle-list/gendle-list.component';
 import { LoginComponent } from './login/login.component';
+import { GoogleBookDetailComponent } from './google-book-detail/google-book-detail.component';
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'author-detail/:idAuthorToUpdate', component: AuthorDetailComponent },
  // { path: '', redirectTo: 'authors', pathMatch: 'full'}
   { path: 'gendles', component: GendleListComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'googlebooks-detail/:idGooglebooks', component: GoogleBookDetailComponent}
 ];
 
 @NgModule({

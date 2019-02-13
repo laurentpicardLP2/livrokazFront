@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
-import { DatamockService } from '../datamock.service';
+import { GendleService } from '../services/gendle.service';
 import { Gendle } from '../models/gendle.model';
 
 
@@ -14,12 +13,10 @@ export class GendleListComponent implements OnInit {
 
   gendleList: BehaviorSubject<Gendle[]>;
 
-  constructor( private route: ActivatedRoute,
-               private datamockService: DatamockService, 
-               private router: Router) { }
+  constructor( private gendleService: GendleService) { }
 
   ngOnInit() {
-    this.gendleList = this.datamockService.availableGendle$
+    this.gendleList = this.gendleService.availableGendle$
   }
 
 }

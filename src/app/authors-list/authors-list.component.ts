@@ -1,7 +1,7 @@
 import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 import { Author} from '../models/author.model';
-import { DatamockService } from '../datamock.service';
+import { AuthorService } from '../services/author.service';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -15,12 +15,12 @@ export class AuthorsListComponent implements OnInit {
   authorsList: BehaviorSubject<Author[]>;
 
   constructor(private route: ActivatedRoute,
-    private datamockService: DatamockService,
+    private authorService: AuthorService,
     private router: Router) { }
 
 
   ngOnInit() {
-    this.authorsList  = this.datamockService.availableAuthors$
+    this.authorsList  = this.authorService.availableAuthors$
   }
 
   onUpdate(idAuthorToUpdate: number) {
@@ -29,8 +29,8 @@ export class AuthorsListComponent implements OnInit {
 
   onDelete(idAuthorToDelete: number, indexDelete: number){
 
-    this.datamockService.findAuthor(idAuthorToDelete).subscribe(author => {
-      this.datamockService.deleteAuthor(author, indexDelete);
+    this.authorService.findAuthor(idAuthorToDelete).subscribe(author => {
+      this.authorService.deleteAuthor(author, indexDelete);
     });
   }
 

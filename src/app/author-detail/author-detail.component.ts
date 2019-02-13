@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DatamockService } from './../datamock.service';
+import { AuthorService } from '../services/author.service';
 import { Author } from './../models/author.model';
 
 @Component({
@@ -14,21 +14,21 @@ export class AuthorDetailComponent implements OnInit {
   editedAuthor: Author;
 
   constructor(private route: ActivatedRoute,
-              private datamockService: DatamockService,
+              private authorService: AuthorService,
               private router: Router) { }
 
   ngOnInit() {
     this.idAuthorToUpdate = +this.route.snapshot.params.idAuthorToUpdate;
     
 
-    this.datamockService.findAuthor(this.idAuthorToUpdate).subscribe(author => {
+    this.authorService.findAuthor(this.idAuthorToUpdate).subscribe(author => {
       this.editedAuthor = author;
     });
 
   }
 
   onSave() {
-    this.datamockService.updateAuthor(this.editedAuthor);
+    this.authorService.updateAuthor(this.editedAuthor);
     this.router.navigate(['authors']);
   }
 

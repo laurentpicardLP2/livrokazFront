@@ -17,8 +17,14 @@ export class GoogleBookService {
   // La liste des googleBooks de l'application
   private availableGoogleBooks: GoogleBook [] ;
 
-    // La liste observable que l'on rend visible partout dans l'application
-    availableGoogleBooks$: BehaviorSubject<GoogleBook[]> = new BehaviorSubject(this.availableGoogleBooks);
+  // La liste observable que l'on rend visible partout dans l'application
+  availableGoogleBooks$: BehaviorSubject<GoogleBook[]> = new BehaviorSubject(this.availableGoogleBooks);
+
+  // La liste des googleBooksByGendle de l'application
+  private availableGoogleBooksByGendle: GoogleBook [] ;
+
+  // La liste observable que l'on rend visible partout dans l'application
+  availableGoogleBooksByGendle$: BehaviorSubject<GoogleBook[]> = new BehaviorSubject(this.availableGoogleBooksByGendle);
 
 
   /**
@@ -65,4 +71,31 @@ export class GoogleBookService {
       return of(null);
     }
   }
+
+  /**
+   * La fonction getGoogleBooksByGendle() est privée car elle n'a besoin d'être appellée que dans le service.
+   */
+  private getGoogleBooksByGendle(gendleId: number): Observable<GoogleBook[]> {
+
+    
+    return this.httpClient.get<GoogleBook[]>('http://localhost:8080/livrokaz/googlebooksbygendle/' + gendleId ,
+    {
+       headers: {
+          "Content-Type": "application/octet-stream",
+          "Authorization": this.token.getToken()
+      }
+  });
+  }
+
+  /** La fonction publishGoogleBooks() est chargée une fois au démarrage de l'application.
+  * Elle récupère la liste des timelines depuis la base de données et met à jour la liste et la liste observable.
+  */
+ public publishGoogleBooksByGendle(gendleId: number) {
+  this.getGoogleBooksByGendle(gendleId).subscribe(
+    googleBookList => {
+      this.availableGoogleBooksByGendle = googleBookList;
+      this.availableGoogleBooksByGendle$.next(this.availableGoogleBooksByGendle);
+    });
+}
+
 }

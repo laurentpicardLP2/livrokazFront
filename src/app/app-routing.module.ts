@@ -8,6 +8,7 @@ import { GoogleBookListComponent } from './google-book-list/google-book-list.com
 import { GendleListComponent } from './gendle-list/gendle-list.component';
 import { LoginComponent } from './login/login.component';
 import { GoogleBookDetailComponent } from './google-book-detail/google-book-detail.component';
+import { GoogleBooksByGendleComponent } from './google-books-by-gendle/google-books-by-gendle.component';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
  // { path: '', redirectTo: 'authors', pathMatch: 'full'}
   { path: 'gendles', component: GendleListComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'googlebooks-detail/:idGooglebooks', component: GoogleBookDetailComponent}
+  { path: 'googlebooks-detail/:idGooglebooks', component: GoogleBookDetailComponent},
+  { path: 'googlebooks-by-gendle/:gendleId', component: GoogleBooksByGendleComponent}
 ];
 
 @NgModule({

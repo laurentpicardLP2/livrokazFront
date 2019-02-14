@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <form>
+  
+      <h1> Liste des livres</h1>
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              
+              <th> Prix </th>
+              <th>Couverture</th>
+              <th>Visualier</th>     
+              <th>commander</th>
+              
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let googleBook of googleBooksList | async; let i=index">
+              <td>{{ googleBook.bookId }}</td>
+              <td>{{ googleBook.title }}</td>
+              <td>{{googleBook.price}}€</td>
+              <td><img src="{{ googleBook.imgThumbnail }}" width="40" height="40"  alt=""></td>
+              <td><button type="button" class="btn btn-secondary" (click)="onShow(googleBook.bookId)">Visualiser</button></td>
+              <td><button type="button" class="btn btn-secondary" (click)="onOrder(googleBook.bookId)">Commander</button></td>
+            </tr>
+          </tbody>
+        </table> 
+        
+  </form>
+  </div>
+  

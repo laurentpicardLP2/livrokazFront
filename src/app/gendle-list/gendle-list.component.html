@@ -12,7 +12,7 @@
           <tbody>
             <tr *ngFor="let gendle of gendleList | async; let i=index">
               <td>{{ gendle.gendleId }}</td>
-              <td>{{ gendle.typeGendle }}</td>
+              <td><a routerLink="/googlebooks-by-gendle/{{ gendle.gendleId }}">{{ gendle.typeGendle }}</a></td>
               </tr>
           </tbody>
         </table> 

@@ -3,7 +3,117 @@
   max-height: auto;
   display: flex;
   flex-direction: column;
+
+  
   /* align-content: center; */
+}
+
+.image {
+    overflow: hidden;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+}
+
+
+.img {
+
+
+}
+
+.body {
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  display: block;
+  
+ 
+
+}
+
+.couverture {
+ 
+  width: 250px;
+  margin-top: 40px;
+  margin-right: 50px;
+    float: left;
+    
+
+  
+  
+}
+.container-list{
+  justify-content: center;
+  align-content: center;
+}
+
+.matlist {
+width: 700px;
+align-content: center;
+}
+
+.footer {
+  align-content: center;
+  flex-grow: auto;
+  margin-top: 40px;
+ 
+
+  
+}
+
+.header {
+  flex-grow: auto;
+ 
+}
+
+.boutton{
+  border: 1px white solid;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .example-card {
+  max-width: auto;
+  max-height: auto;
+}
+
+.example-header-image {
+  background-image: var(--url);
+  background-size: cover;
 }
 
 .image {
@@ -11,48 +121,49 @@
   border-radius: 50px;
   width: 40px;
   height: 40px;
+  float: none;
+  
 }
 
 .img {
-  
-}
-
-.body {
-  display: flex;
-  height: auto;
-  flex-direction: row;
-  /* display: block; */
-}
-
-.couverture {
-  width: 250px;
-  margin-top: 40px;
-  margin-right: 50px;
-  float: left;
+  width: 240px;
+  height: 320px;
+  margin-bottom: 30px;
   border: 1px white solid;
-  
+  float: left;
 }
 
-.container-list {
-  justify-content: center;
-  align-content: center;
-}
-
-.matlist {
-  width: 700px;
-  align-content: center;
-}
-
-.footer {
-  align-content: center;
-  flex-grow: auto;
-  margin-top: 40px;
-}
-
-.header {
-  flex-grow: auto;
+.clear {
+  overflow: auto;
+  clear: both;
 }
 
 .boutton {
   border: 1px white solid;
 }
+
+mat-card-header {
+  display: inline-block;
+  position: relative;
+  
+}
+
+
+mat-card-content {
+  display: inline-block;
+}
+
+/* .bite {
+  display: inline-block;
+  float: left;
+}
+
+.couverture {
+  display: inline;
+} */
+/* 
+mat-list {
+  display: inline;
+  position: absolute;
+} */
+ 

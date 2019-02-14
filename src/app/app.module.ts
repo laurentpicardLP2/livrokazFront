@@ -1,3 +1,4 @@
+import { TokenStorageService } from './services/token-storage.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -36,7 +37,7 @@ import { GoogleBookDetailComponent } from './google-book-detail/google-book-deta
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [TokenStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

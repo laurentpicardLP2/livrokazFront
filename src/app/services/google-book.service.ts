@@ -3,6 +3,7 @@ import { GoogleBook } from '../models/google-book.model';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class GoogleBookService {
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private token: TokenStorageService ) { }
 
 
   // La liste des googleBooks de l'application
@@ -19,11 +20,20 @@ export class GoogleBookService {
     // La liste observable que l'on rend visible partout dans l'application
     availableGoogleBooks$: BehaviorSubject<GoogleBook[]> = new BehaviorSubject(this.availableGoogleBooks);
 
+
   /**
    * La fonction getGoogleBooks() est privée car elle n'a besoin d'être appellée que dans le service.
    */
   private getGoogleBooks(): Observable<GoogleBook[]> {
-    return this.httpClient.get<GoogleBook[]>('http://localhost:8080/livrokaz/books');
+
+    console.log("getGoogleBooks " ,this.token.getToken());
+    return this.httpClient.get<GoogleBook[]>('http://localhost:8080/livrokaz/books',
+    {
+      headers: {
+          "Content-Type": "application/octet-stream",
+          "Authorization": this.token.getToken()
+      }
+  });
   }
 
   /** La fonction publishGoogleBooks() est chargée une fois au démarrage de l'application.

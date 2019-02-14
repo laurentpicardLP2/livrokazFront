@@ -30,7 +30,7 @@ export class AuthorService {
           "Content-Type": "application/octet-stream",
           "Authorization": this.token.getToken()
       }
-  });
+  } );
   }
 
   /**

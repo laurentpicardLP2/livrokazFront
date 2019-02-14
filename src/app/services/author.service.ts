@@ -3,13 +3,14 @@ import { Author } from '../models/author.model';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorService {
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient, private token: TokenStorageService) { 
 
   }
 
@@ -23,7 +24,13 @@ export class AuthorService {
    * La fonction getAuthors() est privée car elle n'a besoin d'être appellée que dans le service.
    */
   private getAuthors(): Observable<Author[]> {
-    return this.httpClient.get<Author[]>('http://localhost:8080/livrokaz/authors');
+    return this.httpClient.get<Author[]>('http://localhost:8080/livrokaz/authors',
+    {
+      headers: {
+          "Content-Type": "application/octet-stream",
+          "Authorization": this.token.getToken()
+      }
+  });
   }
 
   /**

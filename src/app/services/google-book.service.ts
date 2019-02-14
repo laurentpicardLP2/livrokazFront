@@ -29,10 +29,10 @@ export class GoogleBookService {
     console.log("getGoogleBooks " ,this.token.getToken());
     return this.httpClient.get<GoogleBook[]>('http://localhost:8080/livrokaz/books',
     {
-      headers: {
+     /*  headers: {
           "Content-Type": "application/octet-stream",
           "Authorization": this.token.getToken()
-      }
+      } */
   });
   }
 

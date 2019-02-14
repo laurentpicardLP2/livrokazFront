@@ -16,8 +16,7 @@
         <mat-list-item role="listitem">Langue:&nbsp; <span font style = "text-transform: uppercase"> {{ editedGooglebook.langage }}</span></mat-list-item>
         <mat-list-item role="listitem">Nombre de pages: {{editedGooglebook.pageCount}}</mat-list-item>
         <mat-list-item role="listitem">Prix: {{editedGooglebook.price}} € </mat-list-item>
-        <mat-list-item role="listitem">Genre: {{editedGooglebook.gendleId }}  </mat-list-item>
-        <mat-list-item role="listitem">Nombre de pages: {{editedGooglebook.publishedId}}</mat-list-item>
+        <mat-list-item role="listitem">Auteurs: <ul> <app-author-by-book *ngFor = "let author of authorsList | async; let i=index" [authorName] = "author.fullName"></app-author-by-book></ul></mat-list-item>
       </mat-list>
       </div>
     </div>
@@ -27,6 +26,7 @@
   </div>
   <mat-card-actions><button mat-button class="boutton" (click)="onOrder(googleBook.bookId)">Commander</button></mat-card-actions>
 </mat-card>
+
 
 
 

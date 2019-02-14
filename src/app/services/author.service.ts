@@ -16,10 +16,11 @@ export class AuthorService {
 
   // La liste des authors de l'application
   private availableAuthors: Author [] ;
+  private availableAuthorByBook: Author[];
 
   // La liste observable que l'on rend visible partout dans l'application
   availableAuthors$: BehaviorSubject<Author[]> = new BehaviorSubject(this.availableAuthors);
-
+  availableAuthorByBook$:BehaviorSubject<Author[]> = new BehaviorSubject(this.availableAuthorByBook);
   /**
    * La fonction getAuthors() est privée car elle n'a besoin d'être appellée que dans le service.
    */
@@ -60,6 +61,30 @@ export class AuthorService {
       return of(new Author(''));
     }
   }
+
+  private getAuthorByBook(googleBookId: number): Observable<Author[]>{
+    return this.httpClient.get<Author[]>('http://localhost:8080/livrokaz/authors/' + googleBookId,
+    {
+       headers: {
+          "Content-Type": "application/octet-stream",
+          "Authorization": this.token.getToken()
+      }
+  }
+  );
+  }
+
+  /** La fonction publishGoogleBooks() est chargée une fois au démarrage de l'application.
+  * Elle récupère la liste des timelines depuis la base de données et met à jour la liste et la liste observable.
+  */
+ public publishAuthorsByBook(googleBookId: number) {
+  this.getAuthorByBook(googleBookId).subscribe(
+    authorList => {
+      this.availableAuthorByBook = authorList;
+      this.availableAuthorByBook$.next(this.availableAuthorByBook);
+    });
+}
+
+
 
 
    /**

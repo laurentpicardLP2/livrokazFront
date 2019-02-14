@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { LoginComponent } from './login/login.component';
 import { GoogleBookDetailComponent } from './google-book-detail/google-book-detail.component';
+import { AuthorByBookComponent } from './author-by-book/author-by-book.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { GoogleBookDetailComponent } from './google-book-detail/google-book-deta
     GendleListComponent,
     LoginComponent,
     GoogleBookDetailComponent,
+    AuthorByBookComponent,
   ],
   imports: [
     BrowserModule,

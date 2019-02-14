@@ -26,7 +26,7 @@ export class GoogleBookService {
    */
   private getGoogleBooks(): Observable<GoogleBook[]> {
 
-    console.log("getGoogleBooks " ,this.token.getToken());
+    
     return this.httpClient.get<GoogleBook[]>('http://localhost:8080/livrokaz/books',
     {
        headers: {
@@ -51,7 +51,8 @@ export class GoogleBookService {
 
  /**
    * Cette fonction permet de trouver un livre dans la liste des auteurs chargés par l'application
-   * grâce à son ID.
+   * grâce à son Iconsole.log()
+    D.
    * @param bookId l'id qu'il faut rechercher dans la liste. 
    */
   public findGoogleBook(bookId: number): Observable<GoogleBook> {

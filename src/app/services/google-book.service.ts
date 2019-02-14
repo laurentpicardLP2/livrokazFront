@@ -33,7 +33,8 @@ export class GoogleBookService {
           "Content-Type": "application/octet-stream",
           "Authorization": this.token.getToken()
       }
-  });
+  }
+  );
   }
 
   /** La fonction publishGoogleBooks() est chargée une fois au démarrage de l'application.

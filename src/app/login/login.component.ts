@@ -22,7 +22,7 @@ export class LoginComponent {
       data => {
         this.token.saveToken(data.token);
         console.log("data.token", data.token)
-        this.router.navigate(['googlebooks']);
+        this.router.navigate(['']);
       }
     );
   }

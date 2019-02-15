@@ -19,6 +19,9 @@ export class AuthorNewComponent implements OnInit {
     this.newAuthor = new Author('');
   }
 
+  /**
+   * Permet de créer un nouvel auteur
+   */
   onAddAuthor(){
     this.authorService.createAuthor(this.newAuthor);
     this.router.navigate(['authors/']);

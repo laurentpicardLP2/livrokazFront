@@ -28,14 +28,7 @@ export class AuthorByBookComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-<<<<<<< HEAD
-    
-     //console.log("*************AuthorByBookComponent************" + this.authorName);
-
-
-=======
         
->>>>>>> a0e3b397ef9775402d0600f662d8e83758b41b32
 }
 }
 

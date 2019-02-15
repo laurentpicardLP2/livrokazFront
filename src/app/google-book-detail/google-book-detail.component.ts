@@ -37,14 +37,10 @@ export class GoogleBookDetailComponent implements OnInit {
     this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
       this.editedGooglebook = GoogleBook;
 
-<<<<<<< HEAD
-}
-=======
       this.assetImg = ["comics", "cooking", "economics", "novels", "thriller"]
       this.okImg = this.ifNoAsset(this.editedGooglebook.categorie);
 
     });
->>>>>>> a0e3b397ef9775402d0600f662d8e83758b41b32
 
   }
 

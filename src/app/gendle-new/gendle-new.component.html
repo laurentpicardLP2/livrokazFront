@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <form>
+      <div class="form-group">
+        <label for="typeGendle">Typedu genre</label>
+        <input type="text" class="form-control" id="typeGendle" [(ngModel)]="newGendle.typeGendle" name="typeGendle" required>
+      </div>
+      <div class="form-group">
+        <label for="nbBooks">Nombre de livres souhaité</label>
+        <input type="text" class="form-control" id="nbBooks" [(ngModel)]="newGendle.nbBooks" name="nbBooks" required>
+      </div>
+      <button type="submit" (click)="onAddGendle()">Submit</button>
+  </form>
+</div>

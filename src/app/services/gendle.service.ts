@@ -43,4 +43,29 @@ export class GendleService {
       }
     )
   }
+
+   /**
+   * Fonction de création d'un nouveau genre.
+   * Elle met à jour notre liste des authors et notre liste observable.
+   * @param newGendle le nouvel auteur à créer
+   */
+  public createGendle(newGendle: Gendle) {
+    this.httpClient.post<Gendle>('http://localhost:8080/livrokaz/newgendle', newGendle ).subscribe(
+      newGendle => {
+        this.availableGendles.push(newGendle);
+        this.availableGendle$.next(this.availableGendles);
+      }
+    )
+    window.location.reload();
+  } 
 }
+
+/*('http://localhost:8080/livrokaz/newgendle',
+    {
+      headers: {
+          "Content-Type": "application/octet-stream",
+          "Authorization": this.token.getToken()
+      },
+      body { newgendle }
+  })
+  */

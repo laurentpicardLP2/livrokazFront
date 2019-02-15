@@ -35,8 +35,6 @@ this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook =
 this.editedGooglebook = GoogleBook;
 });
 
-console.log("+++++++++++++++++++++++++++++++++++++++++++++" + this.authorsList.value);
-
 }
 
 onLoad(){

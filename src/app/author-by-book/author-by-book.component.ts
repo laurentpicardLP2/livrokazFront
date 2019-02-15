@@ -26,7 +26,7 @@ export class AuthorByBookComponent implements OnInit {
 
   ngOnInit() {
     
-     console.log("*************AuthorByBookComponent************" + this.authorName);
+     //console.log("*************AuthorByBookComponent************" + this.authorName);
 
 
 }

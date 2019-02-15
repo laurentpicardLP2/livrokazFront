@@ -12,11 +12,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class GoogleBooksByGendleComponent implements OnInit {
 
   googleBooksList: BehaviorSubject<GoogleBook[]>;
-  gendleId: number;
+  gendleId: number; //affichage des livres correspondant au GendleId dont on récupère la valeur passée en argument
 
   constructor(private route: ActivatedRoute,
     private googleBookService: GoogleBookService,
     private router: Router) { }
+
 
   ngOnInit() {
     this.gendleId = +this.route.snapshot.params.gendleId;
@@ -28,7 +29,6 @@ export class GoogleBooksByGendleComponent implements OnInit {
 
     this.router.navigate(['googlebooks-detail/' + googleBookId]);
     
-
   }
 
 }

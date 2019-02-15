@@ -9,6 +9,7 @@ import { Gendle } from '../models/gendle.model';
   templateUrl: './gendle-list.component.html',
   styleUrls: ['./gendle-list.component.css']
 })
+
 export class GendleListComponent implements OnInit {
 
   gendleList: BehaviorSubject<Gendle[]>;

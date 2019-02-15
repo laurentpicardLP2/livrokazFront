@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './google-book-list.component.html',
   styleUrls: ['./google-book-list.component.css']
 })
+
 export class GoogleBookListComponent implements OnInit {
 
   googleBooksList: BehaviorSubject<GoogleBook[]>;
@@ -18,14 +19,17 @@ export class GoogleBookListComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.googleBooksList  = this.googleBookService.availableGoogleBooks$
-  }
+    this.googleBooksList = this.googleBookService.availableGoogleBooks$
 
+  }
+  /**
+   * 
+   * @param googleBookId id du livre dont on veut afficher le détail
+   * routing vers le components qui affiche le détail d'un livre
+   */
   onShow(googleBookId: number) {
 
     this.router.navigate(['googlebooks-detail/' + googleBookId]);
-    
 
   }
-
 }

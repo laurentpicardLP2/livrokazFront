@@ -14,31 +14,48 @@ import { BehaviorSubject } from 'rxjs';
 
 
 export class GoogleBookDetailComponent implements OnInit {
-  idGooglebooks: number;
-  editedGooglebook: GoogleBook;
 
-  authorsList: BehaviorSubject<Author[]>;
-  
+
+  idGooglebooks: number;                      //id du live que dont on souhaite le détail
+  editedGooglebook: GoogleBook;               //instance d'un googlebook
+  okImg: boolean;                             // boolean affichant le logo d'une catégorie si présent, sinon affichage d'un logo générique
+  assetImg: string[];                         //source des logos disponibles
+  authorsList: BehaviorSubject<Author[]>;     //souscription à une source  Subject (écouter et mettre à jour la dataSource)
+
   constructor(private route: ActivatedRoute,
     private googleBookService: GoogleBookService,
     private router: Router,
     private authorService: AuthorService) { }
 
-ngOnInit() {
- this.idGooglebooks = +this.route.snapshot.params.idGooglebooks;
+  ngOnInit() {
+    this.idGooglebooks = +this.route.snapshot.params.idGooglebooks;
 
- this.authorService.publishAuthorsByBook(this.idGooglebooks);
+    this.authorService.publishAuthorsByBook(this.idGooglebooks);
 
-this.authorsList  = this.authorService.availableAuthorByBook$;
+    this.authorsList = this.authorService.availableAuthorByBook$;
 
-this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
-this.editedGooglebook = GoogleBook;
-});
+    this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
+      this.editedGooglebook = GoogleBook;
 
+<<<<<<< HEAD
 }
+=======
+      this.assetImg = ["comics", "cooking", "economics", "novels", "thriller"]
+      this.okImg = this.ifNoAsset(this.editedGooglebook.categorie);
 
-onLoad(){
-  console.log(this.authorsList.value);
-}
+    });
+>>>>>>> a0e3b397ef9775402d0600f662d8e83758b41b32
+
+  }
+
+  /**
+   * 
+   * @param file Nom du fichier image dont on veut vérifier la présence dans les assets.
+   * Retourne une valeur bouléene qui indique la présence ou non du logo
+   */
+  ifNoAsset(file: string) {
+    return this.assetImg.find(fileApi => fileApi === file).length > 0;
+
+  }
 
 }

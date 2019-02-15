@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleBook } from '../models/google-book.model';
 import { GoogleBookService } from '../services/google-book.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatPaginator, MatTableDataSource, PageEvent, MatSort } from '@angular/material'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @Component({
   selector: 'app-google-book-list',
@@ -11,25 +13,35 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class GoogleBookListComponent implements OnInit {
+ googleBooksList: BehaviorSubject<GoogleBook[]>;
+MyDataSource: any;
+displayedColumns: string[] = ['Id', 'Titre', 'Prix', 'Couverture'];
+@ViewChild(MatPaginator) paginator: MatPaginator;
+@ViewChild(MatSort) sort: MatSort;
 
-  googleBooksList: BehaviorSubject<GoogleBook[]>;
+constructor(private route: ActivatedRoute, public googleBookService: GoogleBookService, private router: Router) {
 
-  constructor(private route: ActivatedRoute,
-    private googleBookService: GoogleBookService,
-    private router: Router) { }
+}
 
-  ngOnInit() {
-    this.googleBooksList = this.googleBookService.availableGoogleBooks$
+ngOnInit() {
+this.googleBooksList = this.googleBookService.availableGoogleBooks$;
+this.RenderDataTable();
+}
+RenderDataTable() {
+this.googleBookService.getGoogleBooks().subscribe(
+res => {
+this.MyDataSource = new MatTableDataSource();
+this.MyDataSource.data = res;
+this.MyDataSource.sort = this.sort;
+this.MyDataSource.paginator = this.paginator;
+console.log(this.MyDataSource.data);
+},
+error => {
+console.log('There was an error !' + error);
+});
+}
+onShow(googleBookId: number) {
+this.router.navigate(['googlebooks-detail/' + googleBookId])
+}
 
-  }
-  /**
-   * 
-   * @param googleBookId id du livre dont on veut afficher le détail
-   * routing vers le components qui affiche le détail d'un livre
-   */
-  onShow(googleBookId: number) {
-
-    this.router.navigate(['googlebooks-detail/' + googleBookId]);
-
-  }
 }

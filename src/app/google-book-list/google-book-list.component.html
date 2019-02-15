@@ -1,32 +1,32 @@
-<div class="container-fluid">
-  <form>
-  
-      <h1> Liste des livres</h1>
-      <table class="table">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Title</th>
-              
-              <th> Prix </th>
-              <th>Couverture</th>
-              <th>Visualier</th>     
-              <th>commander</th>
-              
-              </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let googleBook of googleBooksList | async; let i=index">
-              <td>{{ googleBook.bookId }}</td>
-              <td>{{ googleBook.title }}</td>
-              <td>{{googleBook.price}}€</td>
-              <td><img src="{{ googleBook.imgThumbnail }}" width="40" height="40"  alt=""></td>
-              <td><button type="button" class="btn btn-secondary" (click)="onShow(googleBook.bookId)">Visualiser</button></td>
-              <td><button type="button" class="btn btn-secondary" (click)="onOrder(googleBook.bookId)">Commander</button></td>
-            </tr>
-          </tbody>
-        </table> 
-        
-  </form>
+<div class="alert alert-info">
+  <strong>Liste des livres.</strong>
   </div>
-  
+  <mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <div class="example-container mat-elevation-z8">
+  <mat-table #Table [dataSource]="MyDataSource" multiTemplateDataRows matSort>
+  <ng-container matColumnDef="Id" >
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+  <mat-cell *matCellDef="let post"> {{post.bookId}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Titre">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
+  <mat-cell *matCellDef="let post"> {{post.title}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Prix">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Prix </mat-header-cell>
+  <mat-cell *matCellDef="let post"> {{post.price}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Couverture">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Couverture </mat-header-cell>
+  <mat-cell style="text-align: center;" *matCellDef="let post">
+  <img class="img-rounded" src={{post.imgThumbnail}} />
+  </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onShow(row.bookId)"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+  </div>

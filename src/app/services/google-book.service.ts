@@ -30,7 +30,7 @@ export class GoogleBookService {
   /**
    * La fonction getGoogleBooks() est privée car elle n'a besoin d'être appellée que dans le service.
    */
-  private getGoogleBooks(): Observable<GoogleBook[]> {
+  public getGoogleBooks(): Observable<GoogleBook[]> {
 
     
     return this.httpClient.get<GoogleBook[]>('http://localhost:8080/livrokaz/books',

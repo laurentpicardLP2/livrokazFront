@@ -1,6 +1,9 @@
 <mat-card class="container">
   <mat-card-header class="header">
-    <div mat-card-avatar><img class="image" src="assets/{{ editedGooglebook.categorie }}.png"></div>
+    <div mat-card-avatar><img  *ngIf = "okImg" class="image" src="assets/{{ editedGooglebook.categorie }}.png" >
+      <img class ="image" *ngIf = "!okImg " src="assets/livrOkaz.png" alt= "BLABLA">
+    
+    </div>
     <mat-card-title>{{ editedGooglebook.title }}</mat-card-title>
     <mat-card-subtitle>{{ editedGooglebook.categorie }}</mat-card-subtitle>
   </mat-card-header>

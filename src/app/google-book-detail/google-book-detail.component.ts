@@ -16,6 +16,8 @@ import { BehaviorSubject } from 'rxjs';
 export class GoogleBookDetailComponent implements OnInit {
   idGooglebooks: number;
   editedGooglebook: GoogleBook;
+  okImg:boolean;
+  assetImg: string[];
 
   authorsList: BehaviorSubject<Author[]>;
   
@@ -33,6 +35,10 @@ this.authorsList  = this.authorService.availableAuthorByBook$;
 
 this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
 this.editedGooglebook = GoogleBook;
+
+this.assetImg = ["comics", "cooking", "economics", "novels", "thriller"]
+    this.okImg = this.ifNoAsset(this.editedGooglebook.categorie);
+
 });
 
 console.log("+++++++++++++++++++++++++++++++++++++++++++++" + this.authorsList.value);
@@ -41,6 +47,11 @@ console.log("+++++++++++++++++++++++++++++++++++++++++++++" + this.authorsList.v
 
 onLoad(){
   console.log(this.authorsList.value);
+}
+
+ifNoAsset(file: string) {
+  return this.assetImg.find(fileApi => fileApi === file).length >0 ;
+   
 }
 
 }

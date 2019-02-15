@@ -12,20 +12,24 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class GoogleBookListComponent implements OnInit {
 
   googleBooksList: BehaviorSubject<GoogleBook[]>;
+ 
+  
 
   constructor(private route: ActivatedRoute,
     private googleBookService: GoogleBookService,
     private router: Router) { }
 
   ngOnInit() {
-    this.googleBooksList  = this.googleBookService.availableGoogleBooks$
+    this.googleBooksList = this.googleBookService.availableGoogleBooks$
+    
   }
 
   onShow(googleBookId: number) {
 
     this.router.navigate(['googlebooks-detail/' + googleBookId]);
-    
 
   }
+
+ 
 
 }

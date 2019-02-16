@@ -19,6 +19,8 @@ import { GoogleBookDetailComponent } from './google-book-detail/google-book-deta
 import { AuthorByBookComponent } from './author-by-book/author-by-book.component';
 import { GoogleBooksByGendleComponent } from './google-books-by-gendle/google-books-by-gendle.component';
 import { GendleNewComponent } from './gendle-new/gendle-new.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { AuthorityComponent } from './authority/authority.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { GendleNewComponent } from './gendle-new/gendle-new.component';
     AuthorByBookComponent,
     GoogleBooksByGendleComponent,
     GendleNewComponent,
+    NewUserComponent,
+    AuthorityComponent,
   ],
   imports: [
     BrowserModule,

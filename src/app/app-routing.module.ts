@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { GoogleBookDetailComponent } from './google-book-detail/google-book-detail.component';
 import { GoogleBooksByGendleComponent } from './google-books-by-gendle/google-books-by-gendle.component';
 import { GendleNewComponent } from './gendle-new/gendle-new.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'googlebooks-detail/:idGooglebooks', component: GoogleBookDetailComponent},
   { path: 'googlebooks-by-gendle/:gendleId', component: GoogleBooksByGendleComponent},
-  { path: 'gendle-new', component: GendleNewComponent}
+  { path: 'gendle-new', component: GendleNewComponent},
+  { path: 'user-new', component: NewUserComponent}
  
 ];
 

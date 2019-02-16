@@ -18,6 +18,6 @@ export class GoogleBook {
         public title: string,
         public gendleId: number,
         public publishedId: number,
-        public authors: Author
+        public authors: Author[]
     ) { }
 }

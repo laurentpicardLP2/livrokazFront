@@ -3,7 +3,6 @@ import { AuthorService } from './services/author.service';
 import { GendleService } from './services/gendle.service';
 import { GoogleBookService } from './services/google-book.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(
       private dataAuthorService: AuthorService,
       private dataGendleService: GendleService,
-      private dataGoogleBookService: GoogleBookService,
+      private dataGoogleBookService: GoogleBookService
     ) {}
 
   ngOnInit() {

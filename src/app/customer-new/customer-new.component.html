@@ -1,0 +1,94 @@
+<form [formGroup]="userRegistrationForm" class="customer-form"><!--novalidate-->
+
+    <mat-form-field class="customer-full-width">
+        <input matInput placeholder="Full name" type="text" formControlName="fullName">
+        <mat-error>
+            {{errors.fullName}}
+        </mat-error>
+    </mat-form-field>
+    <div formGroupName="usernameGroup">
+      <mat-form-field class="customer-full-width">
+          <input matInput placeholder="Username" type="text" formControlName="username">
+          <mat-error>
+              {{errors.username}}
+          </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="emailGroup">
+        <mat-form-field class="customer-full-width">
+            <input matInput placeholder="Email address" type="email" formControlName="email">
+            <mat-error>
+                {{errors.email}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="customer-full-width">    
+            <input matInput placeholder="Confirm email address" type="email" formControlName="confirmEmail" [errorStateMatcher]="confirmValidParentMatcher">
+            <mat-error>
+                {{errors.confirmEmail}}
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div formGroupName="passwordGroup">
+        <mat-form-field class="customer-full-width">
+            <input matInput placeholder="Password" type="password" formControlName="password">
+            <mat-error>
+                {{errors.password}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="customer-full-width">
+            <input matInput placeholder="Confirm password" type="password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher">
+            <mat-error>
+                {{errors.confirmPassword}}
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button [disabled]="userRegistrationForm.invalid" (click)="register()">Register</button>
+
+</form>
+
+<button (click)="checkUsername1()">check username</button>
+
+    <!-- <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="dateOfBirth" id="dateOfBirth" 
+            readonly (click)="picker.open()">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button type="submit" [disabled]="myForm.invalid" mat-raised-button color="primary">Enregistrer</button>
+  </form> -->
+
+
+<!-- <div class="customer-new-container">
+ 
+  <mat-form-field>
+    <input matInput placeholder="Votre prénom" [(ngModel)]="firstName">
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput placeholder="Email" [formControl]="emailFormControl"
+           [errorStateMatcher]="matcher">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+    </mat-form-field>
+
+  <div class="customer-new-container">
+      <mat-form-field>
+        <input matInput placeholder=" Votre adresse mail" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+ 
+  
+</div>
+<button (click)="onAddCustomer()">Création d'un nouveau customer</button> -->

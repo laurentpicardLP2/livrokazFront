@@ -21,6 +21,8 @@ import { GoogleBooksByGendleComponent } from './google-books-by-gendle/google-bo
 import { GendleNewComponent } from './gendle-new/gendle-new.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { AuthorityComponent } from './authority/authority.component';
+import { CustomerNewComponent } from './customer-new/customer-new.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,12 +40,14 @@ import { AuthorityComponent } from './authority/authority.component';
     GendleNewComponent,
     NewUserComponent,
     AuthorityComponent,
+    CustomerNewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
   ],

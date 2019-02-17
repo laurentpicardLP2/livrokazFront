@@ -22,7 +22,7 @@ export class NewUserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.publishCustomers();
+   //this.userService.publishCustomers();
     
     console.log("appel customerList ");
 

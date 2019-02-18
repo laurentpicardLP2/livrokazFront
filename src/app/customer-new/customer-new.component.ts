@@ -81,31 +81,6 @@ export class CustomerNewComponent implements OnInit {
     
     return isValid ? null : { checkUsername: true };
 
-
-    //return  !(this.customerService.authoritaries.find(authoritary => authoritary.username === username) != undefined);
-        //return this.customerService.authoritaries.find(authoritary => authoritary.username === username);
-      
-      
-    
-    
-    //return !(this.customerService.availableAuthorities$.value.find(authority => authority.username === username));
-
-    //return this.customerService.checkIsNameTaken("JulesFerry1").pipe(map(result => result));
-    // this.customerService.checkIsNameTaken("username").subscribe(
-    //   (isNameTaken) => console.log("isNameTaken", isNameTaken)
-    // );
-    //this.usernameGroup.controls.search.valueChanges.subscribe(result => console.log(result));
-
-  }
-
-  checkUsername1(){
-    
-    //this.customerService.checkIsNameTaken("JulesFerry1").pipe(map(result => console.log(result)));
-    
-    // this.customerService.checkIsNameTaken("JulesFerry1").subscribe(
-    //   (isNameTaken) => console.log("isNameTaken", isNameTaken)
-    // );
-    
   }
 
 

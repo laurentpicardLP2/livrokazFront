@@ -17,6 +17,7 @@ export class GendleListComponent implements OnInit {
   constructor( private gendleService: GendleService) { }
 
   ngOnInit() {
+    console.log("ngOnInit Gendle");
     this.gendleList = this.gendleService.availableGendle$
   }
 

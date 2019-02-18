@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleBook } from '../models/google-book.model';
 import { GoogleBookService } from '../services/google-book.service';
+import { GendleService } from '../services/gendle.service';
+import { AuthorService } from '../services/author.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource, PageEvent, MatSort } from '@angular/material'
@@ -19,12 +21,20 @@ displayedColumns: string[] = ['Id', 'Titre', 'Prix', 'Couverture'];
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
-constructor(private route: ActivatedRoute, public googleBookService: GoogleBookService, private router: Router) {
+constructor(private route: ActivatedRoute, 
+            public googleBookService: GoogleBookService, 
+            private gendleService: GendleService, 
+            private authorService: AuthorService,
+            private router: Router) {
 
 }
 
 ngOnInit() {
+this.authorService.publishAuthors();
+this.googleBookService.publishGoogleBooks();
+this.gendleService.publishGendles();
 this.googleBooksList = this.googleBookService.availableGoogleBooks$;
+
 this.RenderDataTable();
 }
 RenderDataTable() {

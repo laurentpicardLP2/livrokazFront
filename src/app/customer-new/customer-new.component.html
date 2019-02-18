@@ -9,6 +9,7 @@
     <div formGroupName="usernameGroup">
       <mat-form-field class="customer-full-width">
           <input matInput placeholder="Username" type="text" formControlName="username" [errorStateMatcher]="confirmValidParentMatcher">
+          <!-- <mat-error *ngIf="hasError('username', 'required')">Address is required</mat-error> -->
           <mat-error>
               {{errors.username}}
           </mat-error>

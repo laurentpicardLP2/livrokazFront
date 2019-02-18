@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <form>
       <div class="form-group">
         <label for="login">Nom</label>
@@ -10,5 +10,25 @@
       </div>
      <button type="submit" (click)="onSignIn()">Valider</button>
   </form>
-</div>
+</div> -->
+
+
+
+
+
+<form [formGroup]="userSignInForm" class="login-form">
+
+  <mat-form-field class="login-full-width">
+      <input matInput placeholder="Enter your username" type="text" formControlName="username" [(ngModel)]="username">
+  </mat-form-field>
+  
+
+  <mat-form-field class="login-full-width">
+    <input matInput placeholder="Password" type="password" formControlName="password" [(ngModel)]="password">
+</mat-form-field>
+
+  <button mat-raised-button [disabled]="userSignInForm.invalid" (click)="onSignIn()">Se connecter</button>
+
+</form>
+
 

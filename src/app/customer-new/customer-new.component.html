@@ -8,7 +8,7 @@
     </mat-form-field>
     <div formGroupName="usernameGroup">
       <mat-form-field class="customer-full-width">
-          <input matInput placeholder="Username" type="text" formControlName="username">
+          <input matInput placeholder="Username" type="text" formControlName="username" [errorStateMatcher]="confirmValidParentMatcher">
           <mat-error>
               {{errors.username}}
           </mat-error>

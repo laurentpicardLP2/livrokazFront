@@ -34,7 +34,7 @@ export class CustomerNewComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.customerService.publishAuthorities();
   }
 
   createForm() {
@@ -47,8 +47,8 @@ export class CustomerNewComponent implements OnInit {
           usernameGroup: this.formBuilder.group({
           username: ['', [
             Validators.required
-          ]]},
-        {validator: this.checkUsername}),
+          ]]
+        }, {validator: this.checkUsername.bind(this)}),
           emailGroup: this.formBuilder.group({
               email: ['', [
                   Validators.required,
@@ -71,24 +71,40 @@ export class CustomerNewComponent implements OnInit {
   }
 
   checkUsername(group: FormGroup){
-    let username;
+    let username : string;
     for(let a in group.controls) {
       username = group.get([a]).value;
     }
+
+    //console.log("checkUsername", this.customerService.authoritaries.find(authoritary => authoritary.username === username) != undefined);
+    const isValid = !(this.customerService.authoritaries.find(authoritary => authoritary.username === username))
+    
+    return isValid ? null : { checkUsername: true };
+
+
+    //return  !(this.customerService.authoritaries.find(authoritary => authoritary.username === username) != undefined);
+        //return this.customerService.authoritaries.find(authoritary => authoritary.username === username);
+      
+      
+    
+    
+    //return !(this.customerService.availableAuthorities$.value.find(authority => authority.username === username));
+
     //return this.customerService.checkIsNameTaken("JulesFerry1").pipe(map(result => result));
     // this.customerService.checkIsNameTaken("username").subscribe(
     //   (isNameTaken) => console.log("isNameTaken", isNameTaken)
     // );
     //this.usernameGroup.controls.search.valueChanges.subscribe(result => console.log(result));
-    return true;
+
   }
 
   checkUsername1(){
     
     //this.customerService.checkIsNameTaken("JulesFerry1").pipe(map(result => console.log(result)));
-    let pr = this.customerService.checkIsNameTaken("JulesFerry1").subscribe(
-      (isNameTaken) => console.log("isNameTaken", isNameTaken)
-    );
+    
+    // this.customerService.checkIsNameTaken("JulesFerry1").subscribe(
+    //   (isNameTaken) => console.log("isNameTaken", isNameTaken)
+    // );
     
   }
 

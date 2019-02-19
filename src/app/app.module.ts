@@ -23,6 +23,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { AuthorityComponent } from './authority/authority.component';
 import { CustomerNewComponent } from './customer-new/customer-new.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookNewComponent } from './book-new/book-new.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NewUserComponent,
     AuthorityComponent,
     CustomerNewComponent,
+    BookNewComponent,
   ],
   imports: [
     BrowserModule,

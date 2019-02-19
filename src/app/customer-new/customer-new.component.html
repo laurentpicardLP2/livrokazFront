@@ -1,14 +1,14 @@
 <form [formGroup]="userRegistrationForm" class="customer-form"><!--novalidate-->
 
     <mat-form-field class="customer-full-width">
-        <input matInput placeholder="Full name" type="text" formControlName="fullName">
+        <input matInput placeholder="Full name" type="text" formControlName="fullName" [(ngModel)]="fullName">
         <mat-error>
             {{errors.fullName}}
         </mat-error>
     </mat-form-field>
     <div formGroupName="usernameGroup">
       <mat-form-field class="customer-full-width">
-          <input matInput placeholder="Username" type="text" formControlName="username" [errorStateMatcher]="confirmValidParentMatcher">
+          <input matInput placeholder="Username" type="text" formControlName="username" [errorStateMatcher]="confirmValidParentMatcher" [(ngModel)]="username">
           <!-- <mat-error *ngIf="hasError('username', 'required')">Address is required</mat-error> -->
           <mat-error>
               {{errors.username}}
@@ -18,7 +18,7 @@
 
     <div formGroupName="emailGroup">
         <mat-form-field class="customer-full-width">
-            <input matInput placeholder="Email address" type="email" formControlName="email">
+            <input matInput placeholder="Email address" type="email" formControlName="email" [(ngModel)]="email">
             <mat-error>
                 {{errors.email}}
             </mat-error>
@@ -34,7 +34,7 @@
 
     <div formGroupName="passwordGroup">
         <mat-form-field class="customer-full-width">
-            <input matInput placeholder="Password" type="password" formControlName="password">
+            <input matInput placeholder="Password" type="password" formControlName="password" [(ngModel)]="password">
             <mat-error>
                 {{errors.password}}
             </mat-error>
@@ -47,12 +47,76 @@
             </mat-error>
         </mat-form-field>
     </div>
+    <div class="customer-border">
+        <p>
+          <mat-form-field class="customer-full-width">
+                <input matInput placeholder="Domestic Address" type="text" formControlName="domesticAddress" [(ngModel)]="domesticAddress">          
+          </mat-form-field>
+        </p>
+      
+        <table class="customer-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="customer-full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Domestic Postal Code" formControlName="domesticCp" [(ngModel)]="domesticCp">
+                <!-- <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint> -->
+            </mat-form-field></td>
+        <td><mat-form-field class="customer-full-width">
+            <input matInput placeholder="Domestic City" formControlName="domesticCity" [(ngModel)]="domesticCity">
+          </mat-form-field></td>
+          <td><mat-form-field class="customer-full-width">
+            <input matInput placeholder="Domestic State" formControlName="domesticCountry" [(ngModel)]="domesticCountry">
+          </mat-form-field></td>
+        </tr></table>
+    </div> 
+    <p></p>
+    <mat-checkbox formControlName="checkedAdr" (click)="onCopyAdr()" [(ngModel)]="checkedAdrCopy">Delivery Adress = Domestic Adress</mat-checkbox>
+    <div class="customer-border">
+        <p>
+            <mat-form-field class="customer-full-width">
+              <input matInput placeholder="Delivery Address" type="text" formControlName="deliveryAddress" [(ngModel)]="deliveryAddress">
+            </mat-form-field>
+          </p>
+        
+          <table class="customer-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="customer-full-width">
+              <input matInput #postalCode maxlength="5" placeholder="Delivery Postal Code" formControlName="deliveryCp"  [(ngModel)]="deliveryCp">
+               <!-- <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>-->
+            </mat-form-field></td>
+            <td><mat-form-field class="customer-full-width">
+                <input matInput placeholder="Delivery City" formControlName="deliveryCity"  [(ngModel)]="deliveryCity">
+                </mat-form-field></td>
+                <td><mat-form-field class="customer-full-width">
+            <input matInput placeholder="Delivery State" formControlName="deliveryCountry"  [(ngModel)]="deliveryCountry">
+            </mat-form-field></td>
+          </tr></table>
+    </div>   
+    <div>
+        <mat-form-field class="customer-full-width">
+            <span matPrefix>+1 &nbsp;</span>
+            <input type="tel" matInput placeholder="Telephone" formControlName="telephone" [(ngModel)]="telephone">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="date Of Birth" formControlName="dateOfBirth" [(ngModel)]="dateOfBirth">
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button (click)="picker.open()">Open</button>
+    </div>
+    
+
+
+
+
+
+
+
 
     <button mat-raised-button [disabled]="userRegistrationForm.invalid" (click)="register()">Register</button>
 
 </form>
 
-<button (click)="checkUsername1()">check username</button>
+<!-- <button (click)="checkUsername1()">check username</button> -->
 
     <!-- <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="dateOfBirth" id="dateOfBirth" 

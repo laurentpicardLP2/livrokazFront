@@ -1,15 +1,17 @@
+import { LoginService } from './login.service';
 import { Injectable } from '@angular/core';
 import { Gendle } from '../models/gendle.model';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GendleService {
 
-  constructor(private httpClient: HttpClient, private token: TokenStorageService) {  }
+  constructor(private httpClient: HttpClient, private token: TokenStorageService, private router: Router, private loginService: LoginService) {  }
 
     //la liste des Genres de l'application
     private availableGendles: Gendle[];
@@ -50,13 +52,21 @@ export class GendleService {
    * @param newGendle le nouvel auteur à créer
    */
   public createGendle(newGendle: Gendle) {
-    this.httpClient.post<Gendle>('http://localhost:8080/livrokaz/newgendle', newGendle ).subscribe(
+    console.log("newGendle", newGendle.typeGendle)
+    this.httpClient.post<Gendle>('http://localhost:8080/livrokaz/newgendle', newGendle,
+    {
+      headers: {
+         "Content-Type": "application/json",
+         "Authorization": this.token.getToken()
+     }
+ }).subscribe(
       newGendle => {
         this.availableGendles.push(newGendle);
         this.availableGendle$.next(this.availableGendles);
+        window.location.reload();
       }
     )
-    window.location.reload();
+    
   } 
 }
 

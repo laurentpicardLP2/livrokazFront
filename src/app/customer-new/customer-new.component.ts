@@ -7,6 +7,8 @@ import { Router } from '@angular/router';;
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {MyErrorStateMatcher} from '../services/my-error-state-matcher.service';
 import { CustomValidators, ConfirmValidParentMatcher, regExps,  errorMessages} from '../services/custom-validators.service';
+import { HttpClient } from '@angular/common/http';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 
 
@@ -19,15 +21,32 @@ import { CustomValidators, ConfirmValidParentMatcher, regExps,  errorMessages} f
 
 
 export class CustomerNewComponent implements OnInit {
-
+  newCustomer: Customer;
   userRegistrationForm: FormGroup;
   confirmValidParentMatcher = new ConfirmValidParentMatcher();
   errors = errorMessages;
+  fullName: string; 
+  username: string;
+  email: string;
+  password: string;
+  checkedAdrCopy: boolean;
+  domesticAddress: string;
+  domesticCp: string;
+  domesticCity: string;
+  domesticCountry: string;
+  deliveryAddress: string;
+  deliveryCp: string;
+  deliveryCity: string;
+  deliveryCountry: string;
+  telephone: string;
+  dateOfBirth: Date;
+ 
 
   constructor(
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    private router: Router
+    private router: Router,
+    private httpClient: HttpClient
 ) {
     this.createForm();
 }
@@ -35,6 +54,7 @@ export class CustomerNewComponent implements OnInit {
 
   ngOnInit() {
     this.customerService.publishAuthorities();
+    this.checkedAdrCopy = false;
   }
 
   createForm() {
@@ -62,25 +82,108 @@ export class CustomerNewComponent implements OnInit {
                   Validators.pattern(regExps.password)
               ]],
               confirmPassword: ['', Validators.required]
-          }, { validator: CustomValidators.childrenEqual})
+          }, { validator: CustomValidators.childrenEqual}),
+        domesticAddress: ['', [
+            Validators.required
+        ]],
+        domesticCity: ['', [
+            Validators.required
+        ]],
+        domesticCp: ['', [
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(5)
+        ]],
+        domesticCountry: ['', [
+            Validators.required
+        ]],
+        checkedAdr: [true],
+        deliveryAddress: ['', [
+            Validators.required
+        ]],
+        deliveryCity: ['', [
+            Validators.required
+        ]],
+        deliveryCp: ['', [
+            Validators.required,
+            Validators.minLength(5),
+            Validators.maxLength(5)
+        ]],
+        deliveryCountry: ['', [
+            Validators.required
+        ]],
+        telephone: ['', [
+            Validators.required
+        ]],
+        dateOfBirth: ['', [
+            Validators.required
+        ]]
       });
+  }
+
+  onCopyAdr(){
+      if(!this.checkedAdrCopy){
+        console.log("checkedAdrCopy : ", !this.checkedAdrCopy);
+        this.deliveryAddress = this.domesticAddress;
+        this.deliveryCp = this.domesticCp;
+        this.deliveryCity = this.domesticCity;
+        this.deliveryCountry = this.domesticCountry;
+      }
+      else {
+        this.deliveryAddress="";
+        this.deliveryCp = "";
+        this.deliveryCity = "";
+        this.deliveryCountry = "";
+      }
+      
   }
 
   register(): void {
       // API call to register your user
-  }
+      console.log("this.fullName : ", this.fullName);
+      console.log("this.username : ", this.username);
+      console.log("this.email : ", this.email);
+      console.log("this.password : ", this.password);
+      console.log("this.addressDomesctic : ", this.domesticAddress);
+      console.log("this.cpDomestic : ", this.domesticCp);
+      console.log("this.cityDomestic : ", this.domesticCity);
+      console.log("this.countryDomestic : ", this.domesticCountry);
+      console.log("this.addressDelivery : ", this.deliveryAddress);
+      console.log("this.cpDelivery : ", this.deliveryCp);
+      console.log("this.cityDelivery : ", this.deliveryCity);
+      console.log("this.countryDelivery : ", this.deliveryCountry);
+      console.log("this.telephone : ", this.telephone);
+      console.log("this.dateOfBirth : ", this.dateOfBirth);
+      this.newCustomer = new Customer(
+                this.fullName, 
+                this.username, 
+                this.email, 
+                this.password, 
+                this.domesticAddress,
+                this.domesticCp,
+                this.domesticCity,
+                this.domesticCountry,
+                this.deliveryAddress,
+                this.deliveryCp,
+                this.deliveryCity,
+                this.deliveryCountry,
+                this.telephone,
+                this.dateOfBirth);
+
+      this.httpClient.post<Customer>('http://localhost:8080/userctrl/newcustomer', this.newCustomer).subscribe(
+          (newUsers) =>{ console.log("création user OK : ", newUsers); this.router.navigate(['']);},
+          (error) => console.log("création user pb : ", error) 
+      );
+ }
 
   checkUsername(group: FormGroup){
     let username : string;
     for(let a in group.controls) {
       username = group.get([a]).value;
     }
-
     //console.log("checkUsername", this.customerService.authoritaries.find(authoritary => authoritary.username === username) != undefined);
     const isValid = !(this.customerService.authoritaries.find(authoritary => authoritary.username === username))
-    
     return isValid ? null : { checkUsername: true };
-
   }
 
 

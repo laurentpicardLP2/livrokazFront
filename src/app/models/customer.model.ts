@@ -3,25 +3,19 @@ export class Customer{
     public enabled: boolean;
 
     constructor (
-        public username : string,
+        public fullName: string,
+        public username: string,
+        public email: string,
         public password: string,
-        public civility: string,
-        public firstName: string,
-        public lastName: string,
-        public mail: string,
-        public tel: string,
-        public numVoieDomicile: string,
-        public nomVoieDomicile: string,
-        public cpDomicile: number,
-        public cityDomicile: string,
-        public countryDomicile: string,
-        public numVoieLivraison: string,
-        public nomVoieLivraison: string,
-        public cpLivraison: number,
-        public cityLivraison: string,
-        public countryLivraison: string,
-        public yyyy: number,
-        public mm: number,
-        public dd: number
+        public domesticAddress: string,
+        public domesticCp: string,
+        public domesticCity: string,
+        public domesticCountry: string,
+        public deliveryAddress: string,
+        public deliveryCp: string,
+        public deliveryCity: string,
+        public deliveryCountry: string,
+        public telephone: string,
+        public dateOfBirth: Date,
     ) {}
 }

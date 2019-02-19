@@ -12,6 +12,7 @@ import { GoogleBooksByGendleComponent } from './google-books-by-gendle/google-bo
 import { GendleNewComponent } from './gendle-new/gendle-new.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { CustomerNewComponent } from './customer-new/customer-new.component';
+import { BookNewComponent } from './book-new/book-new.component';
 
 const routes: Routes = [
 
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'googlebooks-by-gendle/:gendleId', component: GoogleBooksByGendleComponent},
   { path: 'gendle-new', component: GendleNewComponent},
   { path: 'user-new', component: NewUserComponent},
-  { path: 'customer-new', component: CustomerNewComponent}
+  { path: 'customer-new', component: CustomerNewComponent},
+  { path: 'book-new', component: BookNewComponent}
  
 ];
 

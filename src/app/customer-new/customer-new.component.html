@@ -1,4 +1,4 @@
-<form [formGroup]="userRegistrationForm" class="customer-form"><!--novalidate-->
+<form [formGroup]="userRegistrationForm" class="customer-form">
 
     <mat-form-field class="customer-full-width">
         <input matInput placeholder="Full name" type="text" formControlName="fullName" [(ngModel)]="fullName">
@@ -57,7 +57,7 @@
         <table class="customer-full-width" cellspacing="0"><tr>
         <td><mat-form-field class="customer-full-width">
             <input matInput #postalCode maxlength="5" placeholder="Domestic Postal Code" formControlName="domesticCp" [(ngModel)]="domesticCp">
-                <!-- <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint> -->
+                <!-- <mat-hint align="end">{{domesticCp.value.length}} / 5</mat-hint> -->
             </mat-form-field></td>
         <td><mat-form-field class="customer-full-width">
             <input matInput placeholder="Domestic City" formControlName="domesticCity" [(ngModel)]="domesticCity">
@@ -97,20 +97,16 @@
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field>
+        <!-- <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="date Of Birth" formControlName="dateOfBirth" [(ngModel)]="dateOfBirth">
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <button mat-raised-button (click)="picker.open()">Open</button>
+        <button mat-raised-button (click)="picker.open()">Open</button> -->
+        <mat-form-field class="customer-full-width">
+            <input matInput type="date" placeholder="date Of Birth" formControlName="dateOfBirth" [(ngModel)]="dateOfBirth">
+        </mat-form-field>
     </div>
     
-
-
-
-
-
-
-
 
     <button mat-raised-button [disabled]="userRegistrationForm.invalid" (click)="register()">Register</button>
 

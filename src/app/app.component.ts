@@ -10,6 +10,7 @@ import { GoogleBookService } from './services/google-book.service';
 })
 export class AppComponent implements OnInit {
   title = 'livrokaz';
+  isAuthAdmin: boolean;
 
   constructor(
       private dataAuthorService: AuthorService,
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
     ) {}
 
   ngOnInit() {
+    this.isAuthAdmin=true;
     //  this.dataAuthorService.publishAuthors();
     //  this.dataGendleService.publishGendles();
     //  this.dataGoogleBookService.publishGoogleBooks();

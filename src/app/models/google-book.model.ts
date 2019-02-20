@@ -6,7 +6,7 @@ export class GoogleBook {
     constructor(
         public availableQuantity: number,
         public categorie: string,
-        public codeISBN: string,
+        public codeIsbn: string,
         public description: string,
         public imgThumbnail: string,
         public isEbook: boolean,
@@ -14,10 +14,10 @@ export class GoogleBook {
         public pageCount: number,
         public price: number,
         public publishReleased: string,
+        public gendleId: number,
         public textSnippet: string,
         public title: string,
-        public gendleId: number,
-        public publishedId: number,
+        public publisher: string,
         public authors: Author[]
     ) { }
 }

@@ -7,7 +7,7 @@
         <li><a routerLink="/authors">Auteurs</a></li>
         <li><a routerLink="/login">SignIn</a></li>
         <li><a routerLink="/customer-new">SignUp</a></li>
-        <li><a routerLink="/book-new">Add a book</a></li>
+        <li *ngIf="isAuthAdmin===true"><a routerLink="/book-new">Add a book</a></li>
       </ul>
     </mat-sidenav>
     <mat-sidenav-content>

@@ -58,9 +58,9 @@ export class UserService {
         return this.getCustomers().pipe(map(customers => customers.find(customer => customer.username === username)));
       }
       return of(this.availableCustomers.find(customer => customer.username === username));
-    } else {
-      return of(new Customer('', '', '', '', '', '', '', '', '', 0, '', '', '', '', 0, '', '', 0, 0, 0));
-    }
+    // } else {
+    //   return of(new Customer('', '', '', '', '', '', '', '', '', 0, '', '', '', '', 0, '', '', 0, 0, 0));
+     }
   }
 
    /**

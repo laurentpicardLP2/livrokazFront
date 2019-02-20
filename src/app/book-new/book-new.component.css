@@ -1,0 +1,25 @@
+.book-form {
+    min-width: 150px;
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .book-full-width {
+    width: 100%;
+  }
+
+  .div-frame {
+    width: 100%;
+    text-align: center
+  }
+
+  .div-register {
+    text-align: center;
+  }
+  .div-height {
+    height: 30px;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }

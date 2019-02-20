@@ -37,7 +37,8 @@ export class LoginComponent {
       data => {
        
         this.token.saveToken(data.token);
-        console.log("data.token", data.token)
+        console.log("data.token", data.token);
+        //console.log("order", this.token.getOrder());
         this.router.navigate(['googlebooks']);
       }
     );

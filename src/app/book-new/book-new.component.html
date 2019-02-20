@@ -1,3 +1,77 @@
-<p>
-  book-new works!
-</p>
+<form [formGroup]="bookRegistrationForm" class="book-form">
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="Title of book" type="text" formControlName="title">
+        </mat-form-field>
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="Publisher of book" type="text" formControlName="publisher">
+        </mat-form-field>
+        <mat-form-field class="book-full-width">
+                <input matInput placeholder="Category of book" type="text" formControlName="categorie">
+            </mat-form-field>
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="Number of pages" type="text" formControlName="pageCount">
+        </mat-form-field>
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="Price" type="text" formControlName="price">
+        </mat-form-field>
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="Langage" type="text" formControlName="langage">
+        </mat-form-field>
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="description" type="text" formControlName="description">
+        </mat-form-field>
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="publishReleased" type="text" formControlName="publishReleased">
+        </mat-form-field>
+        e-book : 
+        <mat-radio-group formControlName="isEbook">
+            <mat-radio-button value="false" selected>False</mat-radio-button>
+            <mat-radio-button value="true">True</mat-radio-button>
+        </mat-radio-group>
+        <p></p> 
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="Available quantity" type="number" formControlName="availableQuantity">
+        </mat-form-field> 
+        <mat-form-field class="book-full-width">
+            <input matInput placeholder="codeIsbn" type="text" formControlName="codeIsbn">
+        </mat-form-field>
+        <div formArrayName="authors">
+        <h3>The author(s)</h3>
+        <div *ngFor="let authorControl of getAuthors().controls; let i=index">
+            <mat-form-field class="book-full-width">
+                <input matInput type="text" [formControlName]="i">
+            </mat-form-field>
+        </div>
+        <button mat-raised-button (click)="onAddAuthor()">Add an author</button>
+        </div>
+    <div class="div-height"></div>
+    <mat-form-field class="book-full-width">
+        <input matInput placeholder="Picture cover (@url)" type="text" formControlName="imgThumbnail" [(ngModel)]="imgThumbnail">
+    </mat-form-field>
+    <div *ngIf="this.pictureCover != ''" class="div-frame">
+        <img src="{{this.imgThumbnail}}">
+    </div>
+    <div class="div-height"></div>
+    <div class="div-register">
+      <button mat-raised-button [disabled]="bookRegistrationForm.invalid" (click)="register()">Register</button>
+    </div>
+</form>
+
+
+<button (click)="register()">valider</button>
+
+public availableQuantity: number,
+        public categorie: string,
+        public codeIsbn: string,
+        public description: string,
+        public imgThumbnail: string,
+        public isEbook: boolean,
+        public langage: string,
+        public pageCount: number,
+        public price: number,
+        public publishReleased: string,
+        public textSnippet: string,
+        public title: string,
+        public gendleId: number,
+        public publishedId: number,
+        public authors: Author[]

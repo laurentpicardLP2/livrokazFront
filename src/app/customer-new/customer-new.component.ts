@@ -3,7 +3,7 @@ import { async } from '@angular/core/testing';
 import { CustomerService } from '../services/customer.service';
 import { Customer } from './../models/customer.model';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';;
+import { Router } from '@angular/router';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {MyErrorStateMatcher} from '../services/my-error-state-matcher.service';
 import { CustomValidators, ConfirmValidParentMatcher, regExps,  errorMessages} from '../services/custom-validators.service';

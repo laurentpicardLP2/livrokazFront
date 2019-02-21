@@ -51,7 +51,7 @@ console.log('There was an error !' + error);
 });
 }
 onShow(googleBookId: number) {
-this.router.navigate(['googlebooks-detail/' + googleBookId])
+this.router.navigate(['googlebooks-detail/' + googleBookId]);
 }
 
 }

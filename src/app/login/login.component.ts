@@ -39,9 +39,11 @@ export class LoginComponent {
         this.token.saveToken(data.token);
         console.log("data.token", data.token);
         //console.log("order", this.token.getOrder());
+        this.loginService.publishRole()
         this.router.navigate(['googlebooks']);
       }
     );
+    ;
   }
 
 

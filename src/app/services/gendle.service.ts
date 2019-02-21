@@ -22,11 +22,11 @@ export class GendleService {
   /**
    * La fonction getGendles() est privée car elle n'a besoin d'être appellée que dans le service.
    */
-   private getGendles(): Observable<Gendle[]>{
+   public getGendles(): Observable<Gendle[]>{
     return this.httpClient.get<Gendle[]>('http://localhost:8080/livrokaz/gendles',
     {
       headers: {
-          "Content-Type": "application/octet-stream",
+          "Content-Type": "application/json",
           "Authorization": this.token.getToken()
       }
   });
@@ -61,9 +61,9 @@ export class GendleService {
      }
  }).subscribe(
       newGendle => {
+        console.log("newGendle", newGendle);
         this.availableGendles.push(newGendle);
         this.availableGendle$.next(this.availableGendles);
-        window.location.reload();
       }
     )
     

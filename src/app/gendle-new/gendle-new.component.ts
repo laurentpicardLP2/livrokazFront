@@ -21,7 +21,7 @@ export class GendleNewComponent implements OnInit {
 
   onAddGendle(){
     this.gendleService.createGendle(this.newGendle);
-    this.router.navigate(['googlebooks/']);
+    this.router.navigate(['/gendles/']);
   }
 
 }

@@ -1,3 +1,4 @@
+import { GoogleBookService } from './../services/google-book.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GoogleBookService } from '../services/google-book.service';
@@ -34,14 +35,18 @@ export class GoogleBookDetailComponent implements OnInit {
 
     this.authorsList = this.authorService.availableAuthorByBook$;
 
-    this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
-      this.editedGooglebook = GoogleBook;
+    this.editedGooglebook = new GoogleBook(0,'','','','',false,'', 0,0,'',0, '', '', '', null);
 
-      this.assetImg = ["comics", "cooking", "economics", "novels", "thriller"]
-      this.okImg = this.ifNoAsset(this.editedGooglebook.categorie);
-
-    });
-
+    this.googleBookService.publishGoogleBooks();
+    console.log("this.googleBookService.getGoogleBooks()");
+    this.googleBookService.getGoogleBooks().subscribe(
+      () => {
+        this.googleBookService.findGoogleBook(this.idGooglebooks).subscribe(GoogleBook => {
+          this.editedGooglebook = GoogleBook;
+          this.assetImg = ["comics", "cooking", "economics", "novels", "thriller"]
+          this.okImg = this.ifNoAsset(this.editedGooglebook.categorie);
+        }); 
+      });
   }
 
   /**
@@ -50,7 +55,7 @@ export class GoogleBookDetailComponent implements OnInit {
    * Retourne une valeur bouléene qui indique la présence ou non du logo
    */
   ifNoAsset(file: string) {
-    return this.assetImg.find(fileApi => fileApi === file).length > 0;
+    return (this.assetImg.find(fileApi => fileApi === file) !== undefined);
 
   }
 

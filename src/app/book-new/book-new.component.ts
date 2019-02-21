@@ -16,6 +16,7 @@ export class BookNewComponent implements OnInit {
   bookRegistrationForm: FormGroup;
   imgThumbnail: string;
   authors: Author[] = [];
+  lstAuthors: string = "";
   srcResult: any
   isEbook: boolean;
 
@@ -104,8 +105,21 @@ export class BookNewComponent implements OnInit {
       formValue['authors']
 
     )
-     this.httpClient.post<GoogleBook>('http://localhost:8080/livrokaz/addbook', this.newBook).subscribe(
-         (newBook) =>{ console.log("création newBook OK : ", newBook); this.router.navigate(['']);},
+      this.authors = formValue['authors'];
+      console.log(this.authors);
+      for(let i=0; i< this.authors.length; i++){
+        console.log("this.authors[i]", this.authors[i]);
+        this.lstAuthors =  this.lstAuthors + this.authors[i];
+        if (i<this.authors.length-1){
+          this.lstAuthors = this.lstAuthors + ","
+        }
+      }
+    console.log(this.lstAuthors)
+
+    console.log('http://localhost:8080/livrokaz/addbook/' + this.lstAuthors + '/' + formValue["categorie"] + '/' + formValue["publisher"])
+
+     this.httpClient.post<GoogleBook>('http://localhost:8080/livrokaz/addbook/' + this.lstAuthors + '/' + formValue['categorie'] + '/' + formValue['publisher'], this.newBook).subscribe(
+         (newBook) =>{ console.log("création newBook.bookId OK : ", newBook.bookId); this.router.navigate(['googlebooks-detail/' + newBook.bookId]);},
          (error) => console.log("création newBook pb : ", error) 
      );
   }

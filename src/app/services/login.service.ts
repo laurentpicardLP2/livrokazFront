@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import {Observable,of, from } from 'rxjs';
+import { Role } from '../models/role.model';
+import {BehaviorSubject, Observable,of, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,9 @@ import { Router } from '@angular/router';
 export class LoginService {
 
   user: User;
-  baseUrl: 'http://localhost:8080/userctrl/login'
+  baseUrl: 'http://localhost:8080/userctrl/login';
+  public role: string = "anonymous";
+  public username: string="";
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -50,8 +52,33 @@ export class LoginService {
   attemptAuth(ussername: string, password: string): Observable<any> {
     const credentials = {username: ussername, password: password};
     console.log('attempAuth ::');
+    this.username=ussername;
     return this.httpClient.post('http://localhost:8080/userctrl/login', credentials);
   }
+
+
+   // La liste des googleBooks de l'application
+   private availableRole: Role;
+
+   // La liste observable que l'on rend visible partout dans l'application
+   availableRole$: BehaviorSubject<Role> = new BehaviorSubject(this.availableRole);
+ 
+
+
+
+  public getRole(): Observable<Role> {
+    return this.httpClient.get<Role>('http://localhost:8080/userctrl/role/' + this.username);
+  }
+
+
+  public publishRole() {
+    this.getRole().subscribe(
+      role => {
+        this.availableRole = role;
+        this.availableRole$.next(this.availableRole);
+      });
+  }
+
 }
 
 

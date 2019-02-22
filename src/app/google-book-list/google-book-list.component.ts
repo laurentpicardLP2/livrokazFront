@@ -1,3 +1,4 @@
+import { LoginService } from './../services/login.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleBook } from '../models/google-book.model';
 import { GoogleBookService } from '../services/google-book.service';
@@ -7,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource, PageEvent, MatSort } from '@angular/material'
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { Role } from '../models/role.model';
 
 @Component({
   selector: 'app-google-book-list',
@@ -21,10 +23,14 @@ displayedColumns: string[] = ['Id', 'Titre', 'Prix', 'Couverture'];
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
+public role: BehaviorSubject<Role>
+  public typeRole: string;
+
 constructor(private route: ActivatedRoute, 
             public googleBookService: GoogleBookService, 
             private gendleService: GendleService, 
             private authorService: AuthorService,
+            private loginService: LoginService,
             private router: Router) {
 
 }
@@ -34,7 +40,7 @@ this.authorService.publishAuthors();
 this.googleBookService.publishGoogleBooks();
 this.gendleService.publishGendles();
 this.googleBooksList = this.googleBookService.availableGoogleBooks$;
-
+this.publishRole();
 this.RenderDataTable();
 }
 RenderDataTable() {
@@ -53,5 +59,14 @@ console.log('There was an error !' + error);
 onShow(googleBookId: number) {
 this.router.navigate(['googlebooks-detail/' + googleBookId]);
 }
+
+
+public publishRole() {
+  this.loginService.getRole().subscribe(
+    role => {
+      this.typeRole = role.role;   
+    });
+}
+
 
 }

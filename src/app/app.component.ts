@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorService } from './services/author.service';
 import { GendleService } from './services/gendle.service';
 import { GoogleBookService } from './services/google-book.service';
+import { LoginService } from './services/login.service';
+import { BehaviorSubject , Observable} from 'rxjs';
+import { Role } from './models/role.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +14,27 @@ import { GoogleBookService } from './services/google-book.service';
 })
 export class AppComponent implements OnInit {
   title = 'livrokaz';
-  isAuthAdmin: boolean;
+  public role: BehaviorSubject<Role>
+  public availableRole: Role;
+  public typeRole: string = "ROLE_ANONYMOUS";
 
   constructor(
       private dataAuthorService: AuthorService,
       private dataGendleService: GendleService,
-      private dataGoogleBookService: GoogleBookService
+      private dataGoogleBookService: GoogleBookService,
+      private gendleService: GendleService,
+      private loginService: LoginService,
+      private httpClient: HttpClient
     ) {}
 
   ngOnInit() {
-    this.isAuthAdmin=true;
+    
+    this.typeRole = this.loginService.role;
+    //this.typeRole =  this.loginService.availableRole$.value.role;
     //  this.dataAuthorService.publishAuthors();
     //  this.dataGendleService.publishGendles();
     //  this.dataGoogleBookService.publishGoogleBooks();
   }
+
+
 }

@@ -24,6 +24,11 @@ import { AuthorityComponent } from './authority/authority.component';
 import { CustomerNewComponent } from './customer-new/customer-new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookNewComponent } from './book-new/book-new.component';
+import { ContainerGoogleBookListComponent } from './container-google-book-list/container-google-book-list.component';
+
+
+import {MatButtonModule, MatCardModule, MatInputModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +48,7 @@ import { BookNewComponent } from './book-new/book-new.component';
     AuthorityComponent,
     CustomerNewComponent,
     BookNewComponent,
+    ContainerGoogleBookListComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,9 @@ import { BookNewComponent } from './book-new/book-new.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatCardModule, 
+    MatButtonModule, 
+    MatInputModule
   ],
   providers: [TokenStorageService],
   bootstrap: [AppComponent]

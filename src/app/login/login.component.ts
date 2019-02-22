@@ -39,9 +39,13 @@ export class LoginComponent {
         this.token.saveToken(data.token);
         console.log("data.token", data.token);
         //console.log("order", this.token.getOrder());
+        this.loginService.username=this.username;
+        this.loginService.isAuth = true;
         this.loginService.publishRole()
         this.router.navigate(['googlebooks']);
-      }
+      },
+      () => {this.loginService.username="anonymous";
+        this.loginService.isAuth = false;}
     );
     ;
   }

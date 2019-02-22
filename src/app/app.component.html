@@ -1,25 +1,44 @@
 <mat-sidenav-container class="container">
+  
     <mat-sidenav mode="side" opened class="menu">
-      <h3>Menu</h3>
+      <!-- <h3>Menu</h3>
       <ul>
+         <li *ngIf="typeRole === 'ROLE_ADMIN' || typeRole === 'ROLE_USER' || typeRole === 'ROLE_MANAGER' || typeRole === 'ROLE_DEVELOPPER'"><a routerLink="/gendles">Genres</a></li> -->
+        <!--
         <li><a routerLink="/gendles">Genres</a></li>
         <li><a routerLink="/googlebooks">Livres</a></li>
         <li><a routerLink="/authors">Auteurs</a></li>
         <li><a routerLink="/login">SignIn</a></li>
         <li><a routerLink="/customer-new">SignUp</a></li>
-        <li *ngIf="isAuthAdmin===true"><a routerLink="/book-new">Add a book</a></li>
-      </ul>
+        <li><a routerLink="/book-new">Add a book</a></li>
+      </ul> -->
+      <!--add_shopping_cart--><!--material icon tools-->
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar color="primary" class="mat-elevation-z5">
-        <h1>
-          {{ title }}
-        </h1> 
-        
+      <mat-toolbar color="primary" class="mat-elevation-z5" role="heading">
+          <!-- <li *ngIf="typeRole === 'ROLE_ADMIN' || typeRole === 'ROLE_USER' || typeRole === 'ROLE_MANAGER' || typeRole === 'ROLE_DEVELOPPER'"><a routerLink="/gendles">Genres</a></li> -->
+          <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/">
+            <mat-icon>home</mat-icon>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+          </a>
+          <div class="flex-spacer" _ngcontent-cl=""></div>
+          <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/login">
+            <mat-icon>person</mat-icon>
+            <span class="mat-button-wrapper">SignIn</span>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+          </a>
+          <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/customer-new">
+            <mat-icon>person_add</mat-icon>
+            <span class="mat-button-wrapper">SignUp</span>
+          <div class="mat-button-ripple mat-ripple" matripple=""></div>
+          <div class="mat-button-focus-overlay"></div>
+        </a> 
+        <!-- <a routerLink="/upload">Upload</a> -->
       </mat-toolbar>
       <div class="pad">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content> 
   </mat-sidenav-container>
-

@@ -5,6 +5,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {FormControl, FormGroup, FormGroupDirective, FormArray, Validators, FormBuilder, AbstractControl} from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-book-new',
@@ -19,18 +21,22 @@ export class BookNewComponent implements OnInit {
   lstAuthors: string = "";
   srcResult: any
   isEbook: boolean;
+  typeRole: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private googleBookService: GoogleBookService,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private loginService: LoginService,
+    private token: TokenStorageService
   ) { 
     this.createForm();
   }
 
   ngOnInit() {
     this.imgThumbnail='';
+    this.publishRole();
   }
 
   createForm(){
@@ -117,12 +123,31 @@ export class BookNewComponent implements OnInit {
     console.log(this.lstAuthors)
 
     console.log('http://localhost:8080/livrokaz/addbook/' + this.lstAuthors + '/' + formValue["categorie"] + '/' + formValue["publisher"])
+    console.log("this.token.getToken()", this.token.getToken());
 
-     this.httpClient.post<GoogleBook>('http://localhost:8080/livrokaz/addbook/' + this.lstAuthors + '/' + formValue['categorie'] + '/' + formValue['publisher'], this.newBook).subscribe(
+     this.httpClient.post<GoogleBook>('http://localhost:8080/livrokaz/addbook/' + this.lstAuthors + '/' + formValue['categorie'] + '/' + formValue['publisher'],
+      this.newBook,
+      {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": this.token.getToken()
+        }
+    }
+      ).subscribe(
          (newBook) =>{ console.log("création newBook.bookId OK : ", newBook.bookId); this.router.navigate(['googlebooks-detail/' + newBook.bookId]);},
          (error) => console.log("création newBook pb : ", error) 
      );
   }
+
+
+
+public publishRole() {
+  this.loginService.getRole().subscribe(
+    role => {
+      this.typeRole = role.role;   
+    });
+}
+
 
 }
 

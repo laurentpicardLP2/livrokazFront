@@ -1,3 +1,44 @@
+<mat-sidenav-container class="container">
+  
+        <mat-sidenav-content>
+          <mat-toolbar color="primary" class="mat-elevation-z5" role="heading">
+              <!-- <li *ngIf="typeRole === 'ROLE_ADMIN' || typeRole === 'ROLE_USER' || typeRole === 'ROLE_MANAGER' || typeRole === 'ROLE_DEVELOPPER'"><a routerLink="/gendles">Genres</a></li> -->
+              <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/">
+                <mat-icon>home</mat-icon>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+              </a>
+              <div class="flex-spacer" _ngcontent-cl=""></div>
+              <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/login">
+                <mat-icon>person</mat-icon>
+                <span class="mat-button-wrapper">SignIn</span>
+                <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                <div class="mat-button-focus-overlay"></div>
+              </a>
+              <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/customer-new">
+                <mat-icon>person_add</mat-icon>
+                <span class="mat-button-wrapper">SignUp</span>
+              <div class="mat-button-ripple mat-ripple" matripple=""></div>
+              <div class="mat-button-focus-overlay"></div>
+              </a>
+              <a *ngIf="typeRole === 'ROLE_ADMIN' || typeRole === 'ROLE_USER'" class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/googlebooks">
+                <span class="mat-button-wrapper">Books List</span>
+              <div class="mat-button-ripple mat-ripple" matripple=""></div>
+              <div class="mat-button-focus-overlay"></div>
+            </a> 
+                  <a *ngIf="typeRole === 'ROLE_ADMIN'" class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/gendles">
+                <span class="mat-button-wrapper">Gendles</span>
+              <div class="mat-button-ripple mat-ripple" matripple=""></div>
+              <div class="mat-button-focus-overlay"></div>
+            </a> 
+            <a *ngIf="typeRole === 'ROLE_ADMIN'" class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/book-new">
+              <span class="mat-button-wrapper">Add a book</span>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+          </a>
+          </mat-toolbar>
+
+<div class="pad">
 <form [formGroup]="bookRegistrationForm" class="book-form">
         <mat-form-field class="book-full-width">
             <input matInput placeholder="Title of book" type="text" formControlName="title">
@@ -60,18 +101,6 @@
 
 <button (click)="register()">valider</button>
 
-public availableQuantity: number,
-        public categorie: string,
-        public codeIsbn: string,
-        public description: string,
-        public imgThumbnail: string,
-        public isEbook: boolean,
-        public langage: string,
-        public pageCount: number,
-        public price: number,
-        public publishReleased: string,
-        public textSnippet: string,
-        public title: string,
-        public gendleId: number,
-        public publishedId: number,
-        public authors: Author[]
+</div>
+</mat-sidenav-content> 
+</mat-sidenav-container>

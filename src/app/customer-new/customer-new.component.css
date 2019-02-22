@@ -20,3 +20,8 @@
   .customer-border {
     border-style: solid;
   }
+
+  .pad {
+    margin: 5px;
+    padding: 5px;
+  }

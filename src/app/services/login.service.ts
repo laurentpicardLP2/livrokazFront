@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -15,10 +16,14 @@ export class LoginService {
 
   user: User;
   baseUrl: 'http://localhost:8080/userctrl/login';
-  public role: string = "anonymous";
-  public username: string="";
+  public typeRole: string = "ROLE_ANONYMOUS";
+  public username: string="anonymous";
+  public isAuth: boolean = false;
+  private availableRole: Role;
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+
+  constructor(private httpClient: HttpClient, 
+              private router: Router) { }
 
   /**
    * Fonction de d'authentification d'un user.
@@ -52,13 +57,8 @@ export class LoginService {
   attemptAuth(ussername: string, password: string): Observable<any> {
     const credentials = {username: ussername, password: password};
     console.log('attempAuth ::');
-    this.username=ussername;
     return this.httpClient.post('http://localhost:8080/userctrl/login', credentials);
   }
-
-
-   // La liste des googleBooks de l'application
-   private availableRole: Role;
 
    // La liste observable que l'on rend visible partout dans l'application
    availableRole$: BehaviorSubject<Role> = new BehaviorSubject(this.availableRole);
@@ -75,7 +75,7 @@ export class LoginService {
     this.getRole().subscribe(
       role => {
         this.availableRole = role;
-        this.availableRole$.next(this.availableRole);
+        this.availableRole$.next(this.availableRole);        
       });
   }
 

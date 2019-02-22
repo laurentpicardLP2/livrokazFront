@@ -43,3 +43,8 @@ a {
     background-color: #ccc;
     /* Dark grey background on mouse-over */
 }
+
+
+flex-spacer {
+    flex: 1 1 auto;
+}

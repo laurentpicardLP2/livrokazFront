@@ -1,32 +1,79 @@
-<div class="alert alert-info">
-  <strong>Liste des livres.</strong>
-  </div>
-  <mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
-  <div class="example-container mat-elevation-z8">
-  <mat-table #Table [dataSource]="MyDataSource" multiTemplateDataRows matSort>
-  <ng-container matColumnDef="Id" >
-  <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
-  <mat-cell *matCellDef="let post"> {{post.bookId}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="Titre">
-  <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
-  <mat-cell *matCellDef="let post"> {{post.title}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="Prix">
-  <mat-header-cell *matHeaderCellDef mat-sort-header> Prix </mat-header-cell>
-  <mat-cell *matCellDef="let post"> {{post.price}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="Couverture">
-  <mat-header-cell *matHeaderCellDef mat-sort-header> Couverture </mat-header-cell>
-  <mat-cell style="text-align: center;" *matCellDef="let post">
-  <img class="img-rounded" src={{post.imgThumbnail}} />
-  </mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onShow(row.bookId)"></mat-row>
-  </mat-table>
-  <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
-  </mat-paginator>
-  </div>
+<mat-sidenav-container class="container">
+  
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="mat-elevation-z5" role="heading">
+          <!-- <li *ngIf="typeRole === 'ROLE_ADMIN' || typeRole === 'ROLE_USER' || typeRole === 'ROLE_MANAGER' || typeRole === 'ROLE_DEVELOPPER'"><a routerLink="/gendles">Genres</a></li> -->
+          <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/">
+            <mat-icon>home</mat-icon>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+          </a>
+          <div class="flex-spacer" _ngcontent-cl=""></div>
+          <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/login">
+            <mat-icon>person</mat-icon>
+            <span class="mat-button-wrapper">SignIn</span>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+          </a>
+          <a class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/customer-new">
+            <mat-icon>person_add</mat-icon>
+            <span class="mat-button-wrapper">SignUp</span>
+          <div class="mat-button-ripple mat-ripple" matripple=""></div>
+          <div class="mat-button-focus-overlay"></div>
+          </a>
+          <a *ngIf="typeRole === 'ROLE_ADMIN' || typeRole === 'ROLE_USER'" class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/googlebooks">
+            <span class="mat-button-wrapper">Books List</span>
+          <div class="mat-button-ripple mat-ripple" matripple=""></div>
+          <div class="mat-button-focus-overlay"></div>
+        </a> 
+          <a *ngIf="typeRole === 'ROLE_ADMIN'" class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/gendles">
+            <span class="mat-button-wrapper">Gendles</span>
+          <div class="mat-button-ripple mat-ripple" matripple=""></div>
+          <div class="mat-button-focus-overlay"></div>
+        </a> 
+        <a *ngIf="typeRole === 'ROLE_ADMIN'" class="docs-navbar-hide-small docs-button mat-button ng-star-inserted" _ngcontent-cl="" mat-button="" tabindex="0" aria-disabled="false" routerLink="/book-new">
+          <span class="mat-button-wrapper">Add a book</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </a>
+      </mat-toolbar>
+      <div class="pad">
+            
+    <div class="alert alert-info">
+        <strong>Liste des livres.</strong>
+      </div>
+        <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <div class="example-container mat-elevation-z8">
+        <mat-table #Table [dataSource]="MyDataSource" multiTemplateDataRows matSort>
+        <ng-container matColumnDef="Id" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+        <mat-cell *matCellDef="let post"> {{post.bookId}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Titre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
+        <mat-cell *matCellDef="let post"> {{post.title}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Prix">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Prix </mat-header-cell>
+        <mat-cell *matCellDef="let post"> {{post.price}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Couverture">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Couverture </mat-header-cell>
+        <mat-cell style="text-align: center;" *matCellDef="let post">
+        <img class="img-rounded" src={{post.imgThumbnail}} />
+        </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onShow(row.bookId)"></mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+        </mat-paginator>
+        </div>
+      </div>
+    </mat-sidenav-content> 
+  </mat-sidenav-container>
+
+
+

@@ -1,7 +1,6 @@
 import { GoogleBookService } from './../services/google-book.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { GoogleBookService } from '../services/google-book.service';
 import { GoogleBook } from '../models/google-book.model';
 import { Author } from '../models/author.model';
 import { AuthorService } from '../services/author.service';

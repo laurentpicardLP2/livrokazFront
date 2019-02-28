@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     
-    this.typeRole = this.loginService.role;
+    this.typeRole = this.loginService.typeRole;
     //this.typeRole =  this.loginService.availableRole$.value.role;
     //  this.dataAuthorService.publishAuthors();
     //  this.dataGendleService.publishGendles();
